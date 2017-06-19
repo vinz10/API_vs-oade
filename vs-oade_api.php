@@ -72,13 +72,22 @@ function get_questions_by_id($id) {
             $query = "SELECT * FROM questions WHERE questionNo LIKE '3.%';";
             break;
         case 4:
-            $query = "SELECT * FROM questions WHERE questionNo LIKE '4.%' OR questionNo LIKE '5.%';";
+            $query = "SELECT * FROM questions WHERE questionNo LIKE '4.%';";
             break;
         case 5:
-            $query = "SELECT * FROM questions WHERE questionNo LIKE '6.%' OR questionNo LIKE '7.%';";
+            $query = "SELECT * FROM questions WHERE questionNo LIKE '5.%';";
             break;
         case 6:
-            $query = "SELECT * FROM questions WHERE questionNo LIKE '8.%' OR questionNo LIKE '9.%';";
+            $query = "SELECT * FROM questions WHERE questionNo LIKE '6.%';";
+            break;
+        case 7:
+            $query = "SELECT * FROM questions WHERE questionNo LIKE '7.%';";
+            break;
+        case 8:
+            $query = "SELECT * FROM questions WHERE questionNo LIKE '8.%';";
+            break;
+        case 9:
+            $query = "SELECT * FROM questions WHERE questionNo LIKE '9.%';";
             break;
     }
 
