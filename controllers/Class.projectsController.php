@@ -122,4 +122,10 @@ class projectsController extends Controller {
     public static function getProjectsByIdTown($idTown) {
         return Project::getProjectsByIdTown($idTown);
     } 
+    
+    function test() {
+
+        // Initialization of variables
+        
+    }
 }

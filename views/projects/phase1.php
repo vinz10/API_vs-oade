@@ -40,53 +40,25 @@
             
             <form action="<?php echo URL_DIR . '#'; ?>" method="post">
                 
-                <div class="members wow agileits w3layouts slideInLeft">
-                    <div class="adult agileits w3layouts">
-                        <h4>Question 1.1</h4>
-                        <div class="well agileits w3layouts">
-                            Quel est l'objectif principal poursuivi par le projet ?
-                        </div>
-                        <div class="dropdown-button agileits w3layouts">
-                            <textarea name="description" id="description" class="dropdown agileits w3layouts" placeholder="Réponse" required=""><?php echo $persistence[1];?></textarea>
-                        </div>
-                    </div>  
-                </div>
+                <?php
+                    $app_questions = file_get_contents('http://localhost/API/vs-oade_api.php?action=get_questions&id=2');
+                    $app_questions = json_decode($app_questions, true);
+                
+                foreach ($app_questions as $question): ?>
                 
                 <div class="members wow agileits w3layouts slideInLeft">
                     <div class="adult agileits w3layouts">
-                        <h4>Question 1.2</h4>
+                        <h4>Question <?php echo $question["id"] ?></h4>
                         <div class="well agileits w3layouts">
-                            Quels sont les objectifs secondaires poursuivis par le projet ?
+                            <?php echo $question["question"] ?>
                         </div>
                         <div class="dropdown-button agileits w3layouts">
                             <textarea name="description" id="description" class="dropdown agileits w3layouts" placeholder="Réponse" required=""><?php echo $persistence[1];?></textarea>
                         </div>
                     </div>  
                 </div>
-                
-                <div class="members wow agileits w3layouts slideInLeft">
-                    <div class="adult agileits w3layouts">
-                        <h4>Question 1.3</h4>
-                        <div class="well agileits w3layouts">
-                            Quels sont les effets souhaités ?
-                        </div>
-                        <div class="dropdown-button agileits w3layouts">
-                            <textarea name="description" id="description" class="dropdown agileits w3layouts" placeholder="Réponse" required=""><?php echo $persistence[1];?></textarea>
-                        </div>
-                    </div>  
-                </div>
-                
-                <div class="members wow agileits w3layouts slideInLeft">
-                    <div class="adult agileits w3layouts">
-                        <h4>Question 1.4</h4>
-                        <div class="well agileits w3layouts">
-                            Le projet risque-t-il d'avoir des effets secondaires non désirés ?
-                        </div>
-                        <div class="dropdown-button agileits w3layouts">
-                            <textarea name="description" id="description" class="dropdown agileits w3layouts" placeholder="Réponse" required=""><?php echo $persistence[1];?></textarea>
-                        </div>
-                    </div>  
-                </div>
+
+                <?php endforeach; ?>
 
                 <div class="submit wow agileits w3layouts slideInLeft">
                     <input type="submit" name="Submit" class="popup-with-zoom-anim agileits w3layouts" value="<?php echo PHASE1_VALIDATE; ?>">

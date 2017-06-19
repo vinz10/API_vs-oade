@@ -6,7 +6,7 @@
 class SqlConnection {
     const HOST = "127.0.0.1";
     const PORT = "3306";
-    const DATABASE = "db_vs-oade";
+    const DATABASE = "db_vs-oade_admin";
     const USER = "root";
     const PWD = "";
     private static $instance;
