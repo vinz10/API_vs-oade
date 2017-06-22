@@ -1,6 +1,6 @@
 <?php
     //Global Constants
-    define('SITE_NAME', 'vs-oade');
+    define('SITE_NAME', 'API_vs-oade');
     define('ROOT_DIR', dirname(getcwd()) . '/' . SITE_NAME . '/');
     define('URL_DIR', $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT']. '/' . SITE_NAME.'/');
 

@@ -1,181 +1,462 @@
-<?php 
-    // Initialization title
-    $title = HOME_TITLE;
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Simple Responsive Admin</title>
+        <!-- BOOTSTRAP STYLES-->
+        <link href="css/bootstrap.css" rel="stylesheet" />
+        <!-- FONTAWESOME STYLES-->
+        <link href="css/font-awesome.css" rel="stylesheet" />
+        <!-- CUSTOM STYLES-->
+        <link href="css/custom.css" rel="stylesheet" />
+        <!-- GOOGLE FONTS-->
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    </head>
+    <body>
 
-    // Template CSS
-    ob_start(); 
-?>
 
-<!-- Manual -->
-<div class="manual agileits w3layouts">
-    <div class="container">
 
-        <div class="col-md-6 col-sm-6 manual-grids manual-grids2 agileits w3layouts wow slideInRight">
+        <div id="wrapper">
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="adjust-nav">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">
+                            <img src="img/logo.png" />
 
-            <h3><?php echo HOME_MANUAL; ?></h3>
+                        </a>
 
-            <!-- Slider4 -->
-            <div class="slider-4 agileits w3layouts">
-                <ul class="rslides agileits w3layouts" id="slider4">
-                    <li>
-                        <p>Le porteur de projet remplit un questionnaire préalable sur l’idée de projet qu’il va ensuite remettre au conseil communal.</p>
-                        <h4>Phase 1</h4>
-                    </li>
-                    <li>
-                        <p>Le conseil communal analyse ces questions sous un point de vue « développement durable » et exécute une pondération sur ces questions à l’aide d’une grille prédéterminée pour arriver sur une première évaluation nommée analyse initiale (radar sur un schéma).</p>
-                        <h4>Phase 2</h4>
-                    </li>
-                    <li>
-                        <p>Un deuxième filtre est présenté au conseil avec des questions principalement axées sur l’analyse des conflits potentiels.</p>
-                        <h4>Phase 3</h4>
-                    </li>
-                    <li>
-                        <p>Un troisième filtre est présenté au conseil pour pouvoir évaluer le projet en fonction de la politique communale toujours en mettant des pondérations sur les différents critères.</p>
-                        <h4>Phase 4</h4>
-                    </li>
-                    <li>
-                        <p>Ces pondérations vont nous permettre de comparer une analyse initiale et un état souhaité par la commune en fonction des pondérations qu’ils ont effectuées.</p>
-                        <h4>Phase 5</h4>
-                    </li>
-                    <li>
-                        <p>Une partie annexe est proposée au conseil sous forme de questions ouvertes afin de suggérer des améliorations et optimisations au porteur de projet et une autre partie est également disponible pour avoir un filtre sur la cohérence du projet.</p>
-                        <h4>Phase 6</h4>
-                    </li>
-                </ul>
+                    </div>
+
+                    <span class="logout-spn" >
+                        <a href="#" style="color:#fff;">LOGOUT</a>  
+
+                    </span>
+                </div>
             </div>
-            <!-- //Slider4 -->
+            <!-- /. NAV TOP  -->
+            <nav class="navbar-default navbar-side" role="navigation">
+                <div class="sidebar-collapse">
+                    <ul class="nav" id="main-menu">
+
+
+
+                        <li class="active-link">
+                            <a href="index.html" ><i class="fa fa-desktop "></i>Dashboard <span class="badge">Included</span></a>
+                        </li>
+
+
+                        <li>
+                            <a href="ui.html"><i class="fa fa-table "></i>UI Elements  <span class="badge">Included</span></a>
+                        </li>
+                        <li>
+                            <a href="blank.html"><i class="fa fa-edit "></i>Blank Page  <span class="badge">Included</span></a>
+                        </li>
+
+
+                        <li>
+                            <a href="#"><i class="fa fa-qrcode "></i>My Link One</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-bar-chart-o"></i>My Link Two</a>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-edit "></i>My Link Three </a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-table "></i>My Link Four</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-edit "></i>My Link Five </a>
+                        </li>
+
+                    </ul>
+                </div>
+
+            </nav>
+            <!-- /. NAV SIDE  -->
+            <div id="page-wrapper" >
+                <div id="page-inner">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h2>ADMIN DASHBOARD</h2>   
+                        </div>
+                    </div>              
+                    <!-- /. ROW  -->
+                    <hr />
+                    <div class="row">
+                        <div class="col-lg-12 ">
+                            <div class="alert alert-info">
+                                <strong>Welcome Jhon Doe ! </strong> You Have No pending Task For Today.
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- /. ROW  --> 
+                    <div class="row text-center pad-top">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                            <div class="div-square">
+                                <a href="blank.html" >
+                                    <i class="fa fa-circle-o-notch fa-5x"></i>
+                                    <h4>Check Data</h4>
+                                </a>
+                            </div>
+
+
+                        </div> 
+
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                            <div class="div-square">
+                                <a href="blank.html" >
+                                    <i class="fa fa-envelope-o fa-5x"></i>
+                                    <h4>Mail Box</h4>
+                                </a>
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                            <div class="div-square">
+                                <a href="blank.html" >
+                                    <i class="fa fa-lightbulb-o fa-5x"></i>
+                                    <h4>New Issues</h4>
+                                </a>
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                            <div class="div-square">
+                                <a href="blank.html" >
+                                    <i class="fa fa-users fa-5x"></i>
+                                    <h4>See Users</h4>
+                                </a>
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                            <div class="div-square">
+                                <a href="blank.html" >
+                                    <i class="fa fa-key fa-5x"></i>
+                                    <h4>Admin </h4>
+                                </a>
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                            <div class="div-square">
+                                <a href="blank.html" >
+                                    <i class="fa fa-comments-o fa-5x"></i>
+                                    <h4>Support</h4>
+                                </a>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <!-- /. ROW  --> 
+                    <div class="row text-center pad-top">
+
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                            <div class="div-square">
+                                <a href="blank.html" >
+                                    <i class="fa fa-clipboard fa-5x"></i>
+                                    <h4>All Docs</h4>
+                                </a>
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                            <div class="div-square">
+                                <a href="blank.html" >
+                                    <i class="fa fa-gear fa-5x"></i>
+                                    <h4>Settings</h4>
+                                </a>
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                            <div class="div-square">
+                                <a href="blank.html" >
+                                    <i class="fa fa-wechat fa-5x"></i>
+                                    <h4>Live Talk</h4>
+                                </a>
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                            <div class="div-square">
+                                <a href="blank.html" >
+                                    <i class="fa fa-bell-o fa-5x"></i>
+                                    <h4>Notifications </h4>
+                                </a>
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                            <div class="div-square">
+                                <a href="blank.html" >
+                                    <i class="fa fa-rocket fa-5x"></i>
+                                    <h4>Launch</h4>
+                                </a>
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                            <div class="div-square">
+                                <a href="blank.html" >
+                                    <i class="fa fa-user fa-5x"></i>
+                                    <h4>Register User</h4>
+                                </a>
+                            </div>
+
+
+                        </div> 
+                    </div>   
+                    <!-- /. ROW  -->    
+                    <div class="row text-center pad-top">
+
+
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                            <div class="div-square">
+                                <a href="blank.html" >
+                                    <i class="fa fa-envelope-o fa-5x"></i>
+                                    <h4>Mail Box</h4>
+                                </a>
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                            <div class="div-square">
+                                <a href="blank.html" >
+                                    <i class="fa fa-lightbulb-o fa-5x"></i>
+                                    <h4>New Issues</h4>
+                                </a>
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                            <div class="div-square">
+                                <a href="blank.html" >
+                                    <i class="fa fa-users fa-5x"></i>
+                                    <h4>See Users</h4>
+                                </a>
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                            <div class="div-square">
+                                <a href="blank.html" >
+                                    <i class="fa fa-key fa-5x"></i>
+                                    <h4>Admin </h4>
+                                </a>
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                            <div class="div-square">
+                                <a href="#" >
+                                    <i class="fa fa-comments-o fa-5x"></i>
+                                    <h4>Support</h4>
+                                </a>
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                            <div class="div-square">
+                                <a href="blank.html" >
+                                    <i class="fa fa-circle-o-notch fa-5x"></i>
+                                    <h4>Check Data</h4>
+                                </a>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <!-- /. ROW  -->  
+                    <div class="row text-center pad-top">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                            <div class="div-square">
+                                <a href="blank.html" >
+                                    <i class="fa fa-rocket fa-5x"></i>
+                                    <h4>Launch</h4>
+                                </a>
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                            <div class="div-square">
+                                <a href="blank.html" >
+                                    <i class="fa fa-clipboard fa-5x"></i>
+                                    <h4>All Docs</h4>
+                                </a>
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                            <div class="div-square">
+                                <a href="blank.html" >
+                                    <i class="fa fa-gear fa-5x"></i>
+                                    <h4>Settings</h4>
+                                </a>
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                            <div class="div-square">
+                                <a href="blank.html" >
+                                    <i class="fa fa-wechat fa-5x"></i>
+                                    <h4>Live Talk</h4>
+                                </a>
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                            <div class="div-square">
+                                <a href="blank.html" >
+                                    <i class="fa fa-bell-o fa-5x"></i>
+                                    <h4>Notifications </h4>
+                                </a>
+                            </div>
+
+
+                        </div>
+
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                            <div class="div-square">
+                                <a href="blank.html" >
+                                    <i class="fa fa-user fa-5x"></i>
+                                    <h4>Register User</h4>
+                                </a>
+                            </div>
+
+
+                        </div> 
+                    </div>   
+                    <!-- /. ROW  -->  
+                    <div class="row text-center pad-top">
+
+
+
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                            <div class="div-square">
+                                <a href="blank.html" >
+                                    <i class="fa fa-lightbulb-o fa-5x"></i>
+                                    <h4>New Issues</h4>
+                                </a>
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                            <div class="div-square">
+                                <a href="blank.html" >
+                                    <i class="fa fa-users fa-5x"></i>
+                                    <h4>See Users</h4>
+                                </a>
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                            <div class="div-square">
+                                <a href="blank.html" >
+                                    <i class="fa fa-key fa-5x"></i>
+                                    <h4>Admin </h4>
+                                </a>
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                            <div class="div-square">
+                                <a href="blank.html" >
+                                    <i class="fa fa-comments-o fa-5x"></i>
+                                    <h4>Support</h4>
+                                </a>
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                            <div class="div-square">
+                                <a href="blank.html" >
+                                    <i class="fa fa-circle-o-notch fa-5x"></i>
+                                    <h4>Check Data</h4>
+                                </a>
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                            <div class="div-square">
+                                <a href="blank.html" >
+                                    <i class="fa fa-envelope-o fa-5x"></i>
+                                    <h4>Mail Box</h4>
+                                </a>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <!-- /. ROW  -->   
+                    <div class="row">
+                        <div class="col-lg-12 ">
+                            <br/>
+                            <div class="alert alert-danger">
+                                <strong>Want More Icons Free ? </strong> Checkout fontawesome website and use any icon <a target="_blank" href="http://fortawesome.github.io/Font-Awesome/icons/">Click Here</a>.
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- /. ROW  --> 
+                </div>
+                <!-- /. PAGE INNER  -->
+            </div>
+            <!-- /. PAGE WRAPPER  -->
+        </div>
+        <div class="footer">
+
+
+            <div class="row">
+                <div class="col-lg-12" >
+                    &copy;  2017 Vincent Bearpark - Travail Bachelor. All Rights Reserved | Design by Vincent Bearpark
+                </div>
+            </div>
         </div>
 
-        <div class="col-md-6 col-sm-6 manual-grids manual-grids1 agileits w3layouts wow slideInLeft">
 
-            <h3><?php echo HOME_MANUAL; ?></h3>
-
-            <div class="abt-btm agileits w3layouts">
-                <div class="col-md-4 col-sm-4 agileits w3layouts bottom-gds">
-                    <div class="bott-img agileits w3layouts">
-                        <div class="icon-holder agileits w3layouts">
-                            <span class="glyphicon agileits w3layouts glyphicon-question-sign icon" aria-hidden="true"></span>
-                        </div>
-                        <h4 class="mission agileits w3layouts"><?php echo HOME_SURVEY; ?></h4>
-                        <p class="description agileits w3layouts"><a href="about.html">Read More</a></p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4 agileits w3layouts bottom-gds">
-                    <div class="bott-img agileits w3layouts">
-                        <div class="icon-holder agileits w3layouts">
-                            <span class="glyphicon agileits w3layouts glyphicon-signal icon" aria-hidden="true"></span>
-                        </div>
-                        <h4 class="mission agileits w3layouts"><?php echo HOME_CAPITAL_GAIN; ?></h4>
-                        <p class="description agileits w3layouts"><a href="about.html">Read More</a></p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4 agileits w3layouts bottom-gds">
-                    <div class="bott-img agileits w3layouts">
-                        <div class="icon-holder agileits w3layouts">
-                            <span class="glyphicon agileits w3layouts glyphicon-exclamation-sign icon" aria-hidden="true"></span>
-                        </div>
-                        <h4 class="mission agileits w3layouts"><?php echo HOME_CONFLICT; ?></h4>
-                        <p class="description agileits w3layouts"><a href="about.html">Read More</a></p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4 agileits w3layouts bottom-gds">
-                    <div class="bott-img agileits w3layouts">
-                        <div class="icon-holder agileits w3layouts">
-                            <span class="glyphicon agileits w3layouts glyphicon-pencil icon" aria-hidden="true"></span>
-                        </div>
-                        <h4 class="mission agileits w3layouts"><?php echo HOME_WEIGHTING; ?></h4>
-                        <p class="description agileits w3layouts"><a href="about.html">Read More</a></p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4 agileits w3layouts bottom-gds">
-                    <div class="bott-img agileits w3layouts">
-                        <div class="icon-holder agileits w3layouts">
-                            <span class="glyphicon agileits w3layouts glyphicon-adjust icon" aria-hidden="true"></span>
-                        </div>
-                        <h4 class="mission agileits w3layouts"><?php echo HOME_CONSISTENCY; ?></h4>
-                        <p class="description agileits w3layouts"><a href="about.html">Read More</a></p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4 agileits w3layouts bottom-gds">
-                    <div class="bott-img agileits w3layouts">
-                        <div class="icon-holder agileits w3layouts">
-                            <span class="glyphicon agileits w3layouts glyphicon-plus-sign icon" aria-hidden="true"></span>
-                        </div>
-                        <h4 class="mission agileits w3layouts"><?php echo HOME_OPTIMIZATION; ?></h4>
-                        <p class="description agileits w3layouts"><a href="about.html">Read More</a></p>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-        <div class="clearfix"></div>
-
-    </div>
-</div>
+        <!-- /. WRAPPER  -->
+        <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+        <!-- JQUERY SCRIPTS -->
+        <script src="js/jquery-1.10.2.js"></script>
+        <!-- BOOTSTRAP SCRIPTS -->
+        <script src="js/bootstrap.min.js"></script>
+        <!-- CUSTOM SCRIPTS -->
+        <script src="js/custom.js"></script>
 
 
-<!-- Projects -->
-<div class="projects agileits w3layouts">
-    <div class="container">
-
-        <div class="col-md-8 col-sm-8 projects-grid agileits w3layouts projects-grid1 wow slideInLeft">
-            <!-- Slider2 -->
-            <div class="slider-2 agileits w3layouts">
-                <ul class="rslides agileits w3layouts" id="slider2">
-                    <li>
-                        <img src="images/project-1.jpg" alt="Agileits W3layouts">
-                    </li>
-                    <li>
-                        <img src="images/project-2.jpg" alt="Agileits W3layouts">
-                    </li>
-                    <li>
-                        <img src="images/project-3.jpg" alt="Agileits W3layouts">
-                    </li>
-                    <li>
-                        <img src="images/project-4.jpg" alt="Agileits W3layouts">
-                    </li>
-                    <li>
-                        <img src="images/project-5.jpg" alt="Agileits W3layouts">
-                    </li>
-                </ul>
-            </div>
-            <!-- //Slider2 -->
-
-            <!-- Slider3 -->
-            <div class="slider-3 agileits w3layouts">
-                <ul class="rslides agileits w3layouts" id="slider3">
-                    <li>
-                        <img src="images/project-5.jpg" alt="Agileits W3layouts">
-                    </li>
-                    <li>
-                        <img src="images/project-6.jpg" alt="Agileits W3layouts">
-                    </li>
-                    <li>
-                        <img src="images/project-7.jpg" alt="Agileits W3layouts">
-                    </li>
-                    <li>
-                        <img src="images/project-1.jpg" alt="Agileits W3layouts">
-                    </li>
-                    <li>
-                        <img src="images/project-2.jpg" alt="Agileits W3layouts">
-                    </li>
-                </ul>
-            </div>
-            <!-- //Slider3 -->
-        </div>
-
-        <div class="col-md-4 col-sm-4 projects-grid agileits w3layouts projects-grid2 wow slideInRight">
-            <h1><?php echo HOME_PROJECTS; ?></h1>
-            <h4><?php echo HOME_PROJECTS_LIST; ?></h4>
-            <div class="h4-underline agileits w3layouts wow slideInLeft"></div>
-            <p><?php echo HOME_PROJECTS_DESC; ?></p>
-            <a class="agileits w3layoutswow slideInLeft" href="<?php echo URL_DIR . 'projects/projects'; ?>"><?php echo HOME_PROJECTS_ACCESS; ?><span class="glyphicon agileits w3layouts glyphicon-arrow-right" aria-hidden="true"></span></a>
-        </div>
-
-    </div>
-</div>
-
-<?php
-    // Template CSS
-    $content = ob_get_clean(); 
-    require 'views/template.php';
+    </body>
+</html>
