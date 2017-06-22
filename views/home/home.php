@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Simple Responsive Admin</title>
+        <title>API VS-OADE Admin</title>
         <!-- BOOTSTRAP STYLES-->
         <link href="css/bootstrap.css" rel="stylesheet" />
         <!-- FONTAWESOME STYLES-->
@@ -442,7 +442,7 @@
 
             <div class="row">
                 <div class="col-lg-12" >
-                    &copy;  2017 Vincent Bearpark - Travail Bachelor. All Rights Reserved | Design by Vincent Bearpark
+                    &copy;  2017 Vincent Bearpark - Travail Bachelor. All Rights Reserved
                 </div>
             </div>
         </div>
