@@ -11,11 +11,11 @@ class loginController extends Controller {
     function connection() {
 
         // Get data posted by the form
-        $townName = $_POST['townName'];
+        $username = $_POST['username'];
         $password = $_POST['password'];
         
         // Load login from DB if exists
-        $result = Town::connect($townName, $password);
+        $result = User::connect($username, $password);
 
         // Put the login in the session if exists or return error msg
         if(!$result){			
@@ -54,13 +54,4 @@ class loginController extends Controller {
         session_destroy();
         $this->redirect('', '');
     }
-    
-    /**
-    // @method getAllTowns()
-    // @desc Method that return all Towns
-    // @return Towns
-    */
-    public static function getAllTowns() {
-        return Town::getAllTown();
-    } 
 }
