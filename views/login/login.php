@@ -58,6 +58,10 @@
                         <li>
                             <a href="#"><i class="fa fa-users"></i><?php echo MENU_USERS; ?></a>
                         </li>
+                        
+                        <li>
+                            <a href="#"><i class="fa fa-gear"></i><?php echo MENU_SETTINGS; ?></a>
+                        </li>
 
                         <li class="active-link">
                             <a href="<?php echo URL_DIR . 'login/login'; ?>"><i class="fa fa-sign-in"></i><?php echo MENU_LOGIN; ?></a>
@@ -79,6 +83,7 @@
                     
                     <hr />
                     
+                    <!-- Messages -->
                     <div class="row">
                         <div class="col-lg-4 ">
                             <div class="alert alert-info">
@@ -96,6 +101,7 @@
                         </div>
                     </div>
                      
+                    <!-- Login form -->
                     <form action="<?php echo URL_DIR . 'login/connection'; ?>" method="post">
                         <div class="row">
                             <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
@@ -117,6 +123,7 @@
             </div>
         </div>
         
+        <!-- Footer -->
         <div class="footer">
             <div class="row">
                 <div class="col-lg-12" >
