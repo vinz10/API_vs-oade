@@ -15,6 +15,16 @@
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     </head>
     
+    <?php
+    $connect = $this->getLogin();
+    if ($connect) {
+        $login = $_SESSION ['login'];
+    } 
+    else {
+        $login = null;
+    }
+    ?>    
+    
     <body>
         <div id="wrapper">
             
@@ -35,7 +45,11 @@
                     </div>
 
                     <span class="logout-spn" >
-                        <a href="<?php echo URL_DIR . 'login/login'; ?>" style="color:#fff;"><i class="fa fa-sign-in"></i> <?php echo HOME_LOGIN; ?></a>  
+                        <?php if ($login) : ?>
+                            <a href="<?php echo URL_DIR . 'login/logout'; ?>" style="color:#fff;"><i class="fa fa-sign-out"></i> <?php echo HOME_LOGOUT; ?></a>
+                        <?php else : ?>
+                            <a href="<?php echo URL_DIR . 'login/login'; ?>" style="color:#fff;"><i class="fa fa-sign-in"></i> <?php echo HOME_LOGIN; ?></a> 
+                        <?php endif; ?>
                     </span>
                     
                 </div>  
@@ -59,14 +73,17 @@
                         </li>
 
                         <li>
-                            <a href="<?php echo URL_DIR . 'login/login'; ?>"><i class="fa fa-sign-in"></i><?php echo MENU_LOGIN; ?></a>
+                            <?php if ($login) : ?>
+                                <a href="<?php echo URL_DIR . 'login/logout'; ?>"><i class="fa fa-sign-out"></i><?php echo MENU_LOGOUT; ?></a>
+                            <?php else : ?>
+                                <a href="<?php echo URL_DIR . 'login/login'; ?>"><i class="fa fa-sign-in"></i><?php echo MENU_LOGIN; ?></a>
+                            <?php endif; ?>
                         </li>
                         
                     </ul>
                 </div>
             </nav>
             
-
             <div id="page-wrapper" >
                 <div id="page-inner">
                     <div class="row">
@@ -78,11 +95,16 @@
                     <hr />
                     <div class="row">
                         <div class="col-lg-12 ">
-                            <div class="alert alert-info">
-                                <strong><?php echo HOME_WELCOME; ?> Jhon Doe ! </strong>
+                            <?php if ($login) : ?>
+                                <div class="alert alert-success">
+                                    <strong><?php echo HOME_WELCOME . ' ' . $login->getUsername() . '!'; ?></strong>
+                                </div>
+                            <?php else : ?>
+                                <div class="alert alert-info">
+                                    <strong><?php echo MSG_INFO; ?></strong> <?php echo MSG_CONNECT; ?>
+                                </div>
+                            <?php endif; ?>
                             </div>
-
-                        </div>
                     </div>
                     <!-- /. ROW  --> 
                     <div class="row text-center pad-top">

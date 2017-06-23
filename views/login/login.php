@@ -84,6 +84,15 @@
                             <div class="alert alert-info">
                                 <strong><?php echo MSG_INFO; ?></strong> <?php echo MSG_CONNECT; ?>
                             </div>
+                            <?php 
+                                if(!empty($msg)) :
+                            ?>
+                            <div class="alert alert-danger">
+                                <strong><?php echo MSG_ERROR; ?></strong><?php echo ' ' . $msg; ?>
+                            </div>
+                            <?php 
+                                endif;
+                            ?>
                         </div>
                     </div>
                      

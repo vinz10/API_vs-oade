@@ -10,7 +10,7 @@ $lang = array();
 // MESSAGES
 define("MSG_CONNECTION_FAIL", "Connection failed");
 define("MSG_ERROR", "Error!");
-define("MSG_INCORRECT_PWD", "Password incorrect.");
+define("MSG_INCORRECT_PWD", "Incorrect username or password.");
 define("MSG_WARNING", "Warning!");
 define("MSG_PROJECT_EXIST", "The project already exists.");
 define("MSG_INFO", "Information!");
