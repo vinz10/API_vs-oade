@@ -52,15 +52,35 @@
                         </li>
 
                         <li>
-                            <a href="#"><i class="fa fa-table"></i><?php echo MENU_DATA; ?></a>
+                            <a href="<?php echo URL_DIR . 'phases/phase1'; ?>"><i class="fa fa-question-circle"></i><?php echo MENU_PHASE1; ?></a>
                         </li>
                         
                         <li>
-                            <a href="#"><i class="fa fa-users"></i><?php echo MENU_USERS; ?></a>
+                            <a href="<?php echo URL_DIR . 'phases/phase2'; ?>"><i class="fa fa-signal"></i><?php echo MENU_PHASE2; ?></a>
                         </li>
                         
                         <li>
-                            <a href="#"><i class="fa fa-gear"></i><?php echo MENU_SETTINGS; ?></a>
+                            <a href="<?php echo URL_DIR . 'phases/phase3'; ?>"><i class="fa fa-exclamation-circle"></i><?php echo MENU_PHASE3; ?></a>
+                        </li>
+                        
+                        <li>
+                            <a href="<?php echo URL_DIR . 'phases/phase4'; ?>"><i class="fa fa-pencil"></i><?php echo MENU_PHASE4; ?></a>
+                        </li>
+                        
+                        <li>
+                            <a href="<?php echo URL_DIR . 'phases/phase5'; ?>"><i class="fa fa-adjust"></i><?php echo MENU_PHASE5; ?></a>
+                        </li>
+                        
+                        <li>
+                            <a href="<?php echo URL_DIR . 'phases/phase6'; ?>"><i class="fa fa-plus-circle"></i><?php echo MENU_PHASE6; ?></a>
+                        </li>
+                        
+                        <li>
+                            <a href="<?php echo URL_DIR . 'users/users'; ?>"><i class="fa fa-users"></i><?php echo MENU_USERS; ?></a>
+                        </li>
+                        
+                        <li>
+                            <a href="<?php echo URL_DIR . 'settings/settings'; ?>"><i class="fa fa-gear"></i><?php echo MENU_SETTINGS; ?></a>
                         </li>
 
                         <li class="active-link">
