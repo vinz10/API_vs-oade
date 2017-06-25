@@ -41,6 +41,10 @@
                         </span>
                     </div>
                     
+                    <span class="logout-spn" >
+                        <a href="<?php echo URL_DIR . 'login/logout'; ?>" style="color:#fff;"><i class="fa fa-sign-out"></i> <?php echo HOME_LOGOUT; ?></a>
+                    </span>
+                    
                 </div>  
             </div>
            
@@ -105,7 +109,29 @@
                     
                     <hr />
                     
-                    <!-- Messages -->
+                    <div class="col-lg-4 col-md-4">
+                        <h5><i class="fa fa-language"></i> <?php echo SETTINGS_LANGAGE; ?></h5>
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <i class="fa fa-language"></i> <?php echo SETTINGS_LANGAGE_CHOOSE; ?>
+                            </div>
+                            <div class="panel-body">
+                                <?php
+                                if (isset ( $_GET ['id'] )) { 
+                                    echo '<a href="' . '?id=' . $_GET ['id'] . '&lang=en" class="btn btn-default">'. SETTINGS_ENGLISH . '</a>';
+                                    echo ' <a href="' . '?id=' . $_GET ['id'] . '&lang=fr" class="btn btn-default">'. SETTINGS_FRENCH . '</a>';
+                                }
+                                else { 
+                                    echo '<a href="?lang=en" class="btn btn-default">' . SETTINGS_ENGLISH . '</a>';
+                                    echo ' <a href="?lang=fr" class="btn btn-default">' . SETTINGS_FRENCH . '</a>';
+                                }
+                                ?>
+                            </div>
+                            <div class="panel-footer">
+                                <?php echo SETTINGS_LANGAGE; ?>
+                            </div>
+                        </div>
+                    </div>
                     
                 </div>
             </div>

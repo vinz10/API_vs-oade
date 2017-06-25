@@ -41,6 +41,10 @@
                         </span>
                     </div>
                     
+                    <span class="logout-spn" >
+                        <a href="<?php echo URL_DIR . 'login/logout'; ?>" style="color:#fff;"><i class="fa fa-sign-out"></i> <?php echo HOME_LOGOUT; ?></a>
+                    </span>
+                    
                 </div>  
             </div>
            

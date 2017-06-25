@@ -46,6 +46,7 @@ define("LOGIN_PASSWORD", "Mot de passe");
 // PHASE1
 define("PHASE1_TITLE", "API VS-OADE Questionnaire");
 define("PHASE1_PHASE1", "QUESTIONNAIRE");
+define("PHASE1_QUESTION", "Question");
 
 // PHASE2
 define("PHASE2_TITLE", "API VS-OADE Plus-value");
@@ -74,3 +75,7 @@ define("USERS_USERS", "UTILISATEURS");
 // SETTINGS
 define("SETTINGS_TITLE", "API VS-OADE Paramètres");
 define("SETTINGS_SETTINGS", "PARAMÈTRES");
+define("SETTINGS_LANGAGE", "Langues");
+define("SETTINGS_LANGAGE_CHOOSE", "Veuillez choisir une langue");
+define("SETTINGS_ENGLISH", "Anglais");
+define("SETTINGS_FRENCH", "Français");

@@ -1,18 +1,18 @@
 <?php
 
 /**
- * Class Town
+ * Class User
  */
 class User {
+    private $idUser;
     private $username;
     private $password;
-    private $idUser;
     
     /**
      * Constructor
+     * @param int $idUser
      * @param string $username
      * @param string $password
-     * @param int $idUser
      */
     public function __construct($idUser = null, $username, $password){
         $this->setId($idUser);

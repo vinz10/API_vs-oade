@@ -41,6 +41,10 @@
                         </span>
                     </div>
                     
+                    <span class="logout-spn" >
+                        <a href="<?php echo URL_DIR . 'login/logout'; ?>" style="color:#fff;"><i class="fa fa-sign-out"></i> <?php echo HOME_LOGOUT; ?></a>
+                    </span>
+                    
                 </div>  
             </div>
            
@@ -106,6 +110,46 @@
                     <hr />
                     
                     <!-- Messages -->
+                    
+                    <!-- SURVEY -->
+                    <div class="col-lg-12">
+                        <div class="panel-group" id="accordion">
+                            
+                            <?php
+                            $questions = phasesController::getQuestionsByPhaseId(2);
+                            $i = 0;
+
+                            foreach ($questions as $question): $i++; ?>
+                            
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <?php if ($i == 1) : ?>
+                                            <a data-toggle="collapse" data-parent="#accordion" href="<?php echo '#collapse' . $i; ?>" class="collapsed"><?php echo PHASE1_QUESTION . ' '. $question->getQuestionNo(); ?></a>
+                                        <?php else : ?>
+                                            <a data-toggle="collapse" data-parent="#accordion" href="<?php echo '#collapse' . $i; ?>" ><?php echo PHASE1_QUESTION . ' '. $question->getQuestionNo(); ?></a>
+                                        <?php endif; ?>
+                                    </h4>
+                                </div>
+                                <?php if ($i == 1) : ?>
+                                    <div id="<?php echo 'collapse' . $i; ?>" class="panel-collapse in" style="height: auto;">
+                                        <div class="panel-body">
+                                            <?php echo $question->getQuestion(); ?>
+                                        </div>
+                                    </div>
+                                <?php else : ?>
+                                    <div id="<?php echo 'collapse' . $i; ?>" class="panel-collapse collapse" style="height: auto;">
+                                        <div class="panel-body">
+                                            <?php echo $question->getQuestion(); ?>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+
+                            <?php endforeach; ?>
+                            
+                        </div>
+                    </div>
                     
                 </div>
             </div>

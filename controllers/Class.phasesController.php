@@ -130,5 +130,15 @@ class phasesController extends Controller {
             $this->redirect('projects', 'projects');
         }
     }
+    
+    /**
+     // @method getQuestionsByPhaseId()
+     // @desc Method that get a question by the id of the phase from the DB
+     // @param int $idPhase
+     // @return Questions
+     */
+    public static function getQuestionsByPhaseId($idPhase) {
+        return Question::getQuestionsByPhaseId($idPhase);
+    }
 }
 
