@@ -10,6 +10,7 @@ class Question {
     private $questionCommentFR;
     private $questionDE;
     private $questionCommentDE;
+    private $axes_idAxe;
     
     /**
      * Constructor
@@ -19,14 +20,16 @@ class Question {
      * @param string $questionCommentFR
      * @param string $questionDE
      * @param string $questionCommentDE
+     * @param int $axes_idAxe;
      */
-    public function __construct($idQuestion = null, $questionNo, $questionFR, $questionCommentFR, $questionDE, $questionCommentDE){
+    public function __construct($idQuestion = null, $questionNo, $questionFR, $questionCommentFR, $questionDE, $questionCommentDE, $axes_idAxe){
         $this->setId($idQuestion);
         $this->setQuestionNo($questionNo);
         $this->setQuestionFR($questionFR);
         $this->setQuestionCommentFR($questionCommentFR);
         $this->setQuestionDE($questionDE);
         $this->setQuestionCommentDE($questionCommentDE);
+        $this->setAxeId($axes_idAxe);
     }	
 	
     /**
@@ -114,6 +117,20 @@ class Question {
     }
     
     /**
+     * @return axes_idAxe
+     */
+    public function getAxeId(){
+            return $this->axes_idAxe;
+    }
+
+    /**
+     * @param string $axes_idAxe
+     */
+    public function setAxeId($axes_idAxe){
+        $this->axes_idAxe = $axes_idAxe;
+    }
+    
+    /**
      // @method getQuestionsByPhaseId()
      // @desc Method that get a question by the id of the phase from the DB
      // @param int $idPhase
@@ -145,7 +162,7 @@ class Question {
         $rows = $result->fetchAll();
 
         foreach($rows as $row) {
-            $question = new Question($row['idQuestion'], $row['questionNo'], $row['questionFR'], $row['questionCommentFR'], $row['questionDE'], $row['questionCommentDE']);
+            $question = new Question($row['idQuestion'], $row['questionNo'], $row['questionFR'], $row['questionCommentFR'], $row['questionDE'], $row['questionCommentDE'], $row['axes_idAxe']);
                 
             $Questions[] = $question;
         }

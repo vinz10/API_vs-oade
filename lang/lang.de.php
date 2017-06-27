@@ -8,74 +8,74 @@ Language: GERMAN
 $lang = array();
 
 // MESSAGES
-define("MSG_CONNECTION_FAIL", "Connection failed");
-define("MSG_ERROR", "Error!");
-define("MSG_INCORRECT_PWD", "Incorrect username or password.");
-define("MSG_WARNING", "Warning!");
-define("MSG_PROJECT_EXIST", "The project already exists.");
-define("MSG_INFO", "Information!");
-define("MSG_CONNECT", "Please connect you.");
-define("MSG_NO_PROJECT", "There is no existing project for this town.");
+define("MSG_CONNECTION_FAIL", "Verbindung fehlgeschlagen");
+define("MSG_ERROR", "Fehler!");
+define("MSG_INCORRECT_PWD", "Falscher Benutzername oder falsches Kennwort.");
+define("MSG_WARNING", "Warnung!");
+define("MSG_PROJECT_EXIST", "Das Projekt existiert bereits.");
+define("MSG_INFO", "Informationen!");
+define("MSG_CONNECT", "Verbinden Sie Sie bitte.");
+define("MSG_NO_PROJECT", "Es gibt kein existierendes Projekt für diese Stadt.");
 
 // MENU
-define("MENU_DASHBOARD", "Dashboard");
-define("MENU_PHASE1", "Survey");
-define("MENU_PHASE2", "Capital Gain");
-define("MENU_PHASE3", "Potential Conflicts");
-define("MENU_PHASE4", "Weighting");
-define("MENU_PHASE5", "Consistency");
-define("MENU_PHASE6", "Optimization");
-define("MENU_USERS", "See Users");
-define("MENU_SETTINGS", "Settings");
-define("MENU_LOGIN", "Login");
-define("MENU_LOGOUT", "Logout");
+define("MENU_DASHBOARD", "Armaturenbrett");
+define("MENU_PHASE1", "Umfrage");
+define("MENU_PHASE2", "Wertzuwachs");
+define("MENU_PHASE3", "Potenzielle Konflikte");
+define("MENU_PHASE4", "Gewichtung");
+define("MENU_PHASE5", "Kohärenz");
+define("MENU_PHASE6", "Optimierung");
+define("MENU_USERS", "Sieh Benutzer");
+define("MENU_SETTINGS", "Einstellungen");
+define("MENU_LOGIN", "Anmelden");
+define("MENU_LOGOUT", "Ausloggen");
 
 // HOME
-define("HOME_TITLE", "API VS-OADE Dashboard");
-define("HOME_LOGIN", "LOGIN");
-define("HOME_LOGOUT", "LOGOUT");
-define("HOME_DASHBOARD", "ADMIN DASHBOARD");
-define("HOME_WELCOME", "Welcome");
+define("HOME_TITLE", "API VS-OADE Armaturenbrett");
+define("HOME_LOGIN", "ANMELDEN");
+define("HOME_LOGOUT", "AUSLOGGEN");
+define("HOME_DASHBOARD", "ADMIN ARMATURENBRETT");
+define("HOME_WELCOME", "Willkommen");
 
 // LOGIN
-define("LOGIN_TITLE", "API VS-OADE Login");
-define("LOGIN_LOGIN", "LOGIN");
-define("LOGIN_USERNAME", "Username");
-define("LOGIN_PASSWORD", "Password");
+define("LOGIN_TITLE", "API VS-OADE Anmelden");
+define("LOGIN_LOGIN", "ANMELDEN");
+define("LOGIN_USERNAME", "Benutzername");
+define("LOGIN_PASSWORD", "Kennwort");
 
 // PHASE1
-define("PHASE1_TITLE", "API VS-OADE Survey");
-define("PHASE1_PHASE1", "SURVEY");
+define("PHASE1_TITLE", "API VS-OADE Umfrage");
+define("PHASE1_PHASE1", "UMFRAGE");
 define("PHASE1_QUESTION", "Frage");
 
 // PHASE2
-define("PHASE2_TITLE", "API VS-OADE Capital Gain");
-define("PHASE2_PHASE2", "CAPITAL GAIN");
+define("PHASE2_TITLE", "API VS-OADE Wertzuwachs");
+define("PHASE2_PHASE2", "WERTZUWACHS");
 
 // PHASE3
-define("PHASE3_TITLE", "API VS-OADE Potential Contlicts");
-define("PHASE3_PHASE3", "POTENTIAL CONFLITS");
+define("PHASE3_TITLE", "API VS-OADE Potenzielle Konflikte");
+define("PHASE3_PHASE3", "POTENZIELLE KONFLIKTE");
 
 // PHASE4
-define("PHASE4_TITLE", "API VS-OADE Weighting");
-define("PHASE4_PHASE4", "WEIGHTING");
+define("PHASE4_TITLE", "API VS-OADE Gewichtung");
+define("PHASE4_PHASE4", "GEWICHTUNG");
 
 // PHASE5
-define("PHASE5_TITLE", "API VS-OADE Consistency");
-define("PHASE5_PHASE5", "CONSISTENCY");
+define("PHASE5_TITLE", "API VS-OADE Kohärenz");
+define("PHASE5_PHASE5", "KOHÄRENZ");
 
 // PHASE6
-define("PHASE6_TITLE", "API VS-OADE Optimization");
-define("PHASE6_PHASE6", "OPTIMIZATION");
+define("PHASE6_TITLE", "API VS-OADE Optimierung");
+define("PHASE6_PHASE6", "OPTIMIERUNG");
 
 // USERS
-define("USERS_TITLE", "API VS-OADE Users");
-define("USERS_USERS", "USERS");
+define("USERS_TITLE", "API VS-OADE Benutzer");
+define("USERS_USERS", "BENUTZER");
 
 // SETTINGS
-define("SETTINGS_TITLE", "API VS-OADE Settings");
-define("SETTINGS_SETTINGS", "SETTINGS");
-define("SETTINGS_LANGAGE", "Langages");
-define("SETTINGS_LANGAGE_CHOOSE", "Please choose a langage");
+define("SETTINGS_TITLE", "API VS-OADE Einstellungen");
+define("SETTINGS_SETTINGS", "EINSTELLUNGEN");
+define("SETTINGS_LANGAGE", "Sprachen");
+define("SETTINGS_LANGAGE_CHOOSE", "Wählen Sie bitte eine Sprache");
 define("SETTINGS_GERMAN", "Deutsch");
 define("SETTINGS_FRENCH", "Französisch");
