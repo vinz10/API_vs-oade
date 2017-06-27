@@ -6,21 +6,27 @@
 class Question {
     private $idQuestion;
     private $questionNo;
-    private $question;
-    private $questionComment;
+    private $questionFR;
+    private $questionCommentFR;
+    private $questionDE;
+    private $questionCommentDE;
     
     /**
      * Constructor
      * @param int $idQuestion
      * @param string $questionNo
-     * @param string $question
-     * @param string $questionComment
+     * @param string $questionFR
+     * @param string $questionCommentFR
+     * @param string $questionDE
+     * @param string $questionCommentDE
      */
-    public function __construct($idQuestion = null, $questionNo, $question, $questionComment){
+    public function __construct($idQuestion = null, $questionNo, $questionFR, $questionCommentFR, $questionDE, $questionCommentDE){
         $this->setId($idQuestion);
         $this->setQuestionNo($questionNo);
-        $this->setQuestion($question);
-        $this->setQuestionComment($questionComment);
+        $this->setQuestionFR($questionFR);
+        $this->setQuestionCommentFR($questionCommentFR);
+        $this->setQuestionDE($questionDE);
+        $this->setQuestionCommentDE($questionCommentDE);
     }	
 	
     /**
@@ -52,31 +58,59 @@ class Question {
     }
 	
     /**
-     * @return question
+     * @return questionFR
      */
-    public function getQuestion(){
-            return $this->question;
+    public function getQuestionFR(){
+            return $this->questionFR;
     }
 
     /**
-     * @param string $question
+     * @param string $questionFR
      */
-    public function setQuestion($question){
-        $this->question = $question;
+    public function setQuestionFR($questionFR){
+        $this->questionFR = $questionFR;
     }
     
     /**
-     * @return questionComment
+     * @return questionCommentFR
      */
-    public function getQuestionComment(){
-            return $this->questionComment;
+    public function getQuestionCommentFR(){
+            return $this->questionCommentFR;
     }
 
     /**
-     * @param string $questionComment
+     * @param string $questionCommentFR
      */
-    public function setQuestionComment($questionComment){
-        $this->questionComment = $questionComment;
+    public function setQuestionCommentFR($questionCommentFR){
+        $this->questionCommentFR = $questionCommentFR;
+    }
+    
+    /**
+     * @return questionDE
+     */
+    public function getQuestionDE(){
+            return $this->questionDE;
+    }
+
+    /**
+     * @param string $questionDE
+     */
+    public function setQuestionDE($questionDE){
+        $this->questionDE = $questionDE;
+    }
+    
+    /**
+     * @return questionCommentDE
+     */
+    public function getQuestionCommentDE(){
+            return $this->questionCommentDE;
+    }
+
+    /**
+     * @param string $questionCommentDE
+     */
+    public function setQuestionCommentDE($questionCommentDE){
+        $this->questionCommentFR = $questionCommentDE;
     }
     
     /**
@@ -111,7 +145,7 @@ class Question {
         $rows = $result->fetchAll();
 
         foreach($rows as $row) {
-            $question = new Question($row['idQuestion'], $row['questionNo'], $row['question'], $row['questionComment']);
+            $question = new Question($row['idQuestion'], $row['questionNo'], $row['questionFR'], $row['questionCommentFR'], $row['questionDE'], $row['questionCommentDE']);
                 
             $Questions[] = $question;
         }

@@ -77,5 +77,5 @@ define("SETTINGS_TITLE", "API VS-OADE Paramètres");
 define("SETTINGS_SETTINGS", "PARAMÈTRES");
 define("SETTINGS_LANGAGE", "Langues");
 define("SETTINGS_LANGAGE_CHOOSE", "Veuillez choisir une langue");
-define("SETTINGS_ENGLISH", "Anglais");
+define("SETTINGS_GERMAN", "Allemand");
 define("SETTINGS_FRENCH", "Français");

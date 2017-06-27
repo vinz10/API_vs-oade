@@ -118,12 +118,12 @@
                             <div class="panel-body">
                                 <?php
                                 if (isset ( $_GET ['id'] )) { 
-                                    echo '<a href="' . '?id=' . $_GET ['id'] . '&lang=en" class="btn btn-default">'. SETTINGS_ENGLISH . '</a>';
-                                    echo ' <a href="' . '?id=' . $_GET ['id'] . '&lang=fr" class="btn btn-default">'. SETTINGS_FRENCH . '</a>';
+                                    echo '<a href="' . '?id=' . $_GET ['id'] . '&lang=fr" class="btn btn-default">'. SETTINGS_FRENCH . '</a>';
+                                    echo ' <a href="' . '?id=' . $_GET ['id'] . '&lang=de" class="btn btn-default">'. SETTINGS_GERMAN . '</a>';
                                 }
                                 else { 
-                                    echo '<a href="?lang=en" class="btn btn-default">' . SETTINGS_ENGLISH . '</a>';
-                                    echo ' <a href="?lang=fr" class="btn btn-default">' . SETTINGS_FRENCH . '</a>';
+                                    echo '<a href="?lang=fr" class="btn btn-default">' . SETTINGS_FRENCH . '</a>';
+                                    echo ' <a href="?lang=de" class="btn btn-default">' . SETTINGS_GERMAN . '</a>';
                                 }
                                 ?>
                             </div>

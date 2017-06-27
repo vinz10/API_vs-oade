@@ -20,6 +20,7 @@
     $msg = $this->vars['msg'];
     $msgSuccess = $this->vars['msgSuccess'];
     $login = $_SESSION ['login'];
+    $lang = $_SESSION['lang'];
     ?>
     
     <body>
@@ -134,13 +135,21 @@
                                 <?php if ($i == 1) : ?>
                                     <div id="<?php echo 'collapse' . $i; ?>" class="panel-collapse in" style="height: auto;">
                                         <div class="panel-body">
-                                            <?php echo $question->getQuestion(); ?>
+                                            <?php if ($lang == 'fr')
+                                                echo $question->getQuestionFR(); 
+                                            elseif ($lang == 'de')
+                                                echo $question->getQuestionDE(); 
+                                            ?>
                                         </div>
                                     </div>
                                 <?php else : ?>
                                     <div id="<?php echo 'collapse' . $i; ?>" class="panel-collapse collapse" style="height: auto;">
                                         <div class="panel-body">
-                                            <?php echo $question->getQuestion(); ?>
+                                            <?php if ($lang == 'fr')
+                                                echo $question->getQuestionFR(); 
+                                            elseif ($lang == 'de')
+                                                echo $question->getQuestionDE(); 
+                                            ?>
                                         </div>
                                     </div>
                                 <?php endif; ?>

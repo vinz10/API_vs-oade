@@ -1,7 +1,7 @@
 <?php
 /*
 -----------------
-Language: ENGLISH
+Language: GERMAN
 -----------------
  */
 
@@ -46,7 +46,7 @@ define("LOGIN_PASSWORD", "Password");
 // PHASE1
 define("PHASE1_TITLE", "API VS-OADE Survey");
 define("PHASE1_PHASE1", "SURVEY");
-define("PHASE1_QUESTION", "Question");
+define("PHASE1_QUESTION", "Frage");
 
 // PHASE2
 define("PHASE2_TITLE", "API VS-OADE Capital Gain");
@@ -77,5 +77,5 @@ define("SETTINGS_TITLE", "API VS-OADE Settings");
 define("SETTINGS_SETTINGS", "SETTINGS");
 define("SETTINGS_LANGAGE", "Langages");
 define("SETTINGS_LANGAGE_CHOOSE", "Please choose a langage");
-define("SETTINGS_ENGLISH", "English");
-define("SETTINGS_FRENCH", "French");
+define("SETTINGS_GERMAN", "Deutsch");
+define("SETTINGS_FRENCH", "Französisch");
