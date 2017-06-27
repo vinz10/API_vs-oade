@@ -135,20 +135,24 @@
                                 <?php if ($i == 1) : ?>
                                     <div id="<?php echo 'collapse' . $i; ?>" class="panel-collapse in" style="height: auto;">
                                         <div class="panel-body">
-                                            <?php if ($lang == 'fr')
+                                            <?php if ($lang == 'fr') {
                                                 echo $question->getQuestionFR(); 
-                                            elseif ($lang == 'de')
+                                            }
+                                            elseif ($lang == 'de') {
                                                 echo $question->getQuestionDE(); 
+                                            }
                                             ?>
                                         </div>
                                     </div>
                                 <?php else : ?>
                                     <div id="<?php echo 'collapse' . $i; ?>" class="panel-collapse collapse" style="height: auto;">
                                         <div class="panel-body">
-                                            <?php if ($lang == 'fr')
+                                            <?php if ($lang == 'fr') {
                                                 echo $question->getQuestionFR(); 
-                                            elseif ($lang == 'de')
+                                            }
+                                            elseif ($lang == 'de') {
                                                 echo $question->getQuestionDE(); 
+                                            }
                                             ?>
                                         </div>
                                     </div>
