@@ -95,7 +95,8 @@ function get_questions_by_id($id) {
     $rows = $result->fetchAll();
 
     foreach ($rows as $row) {
-        $question = array("id" => $row['questionNo'], "question" => $row['question'], "questionComment" => $row['questionComment']);
+        $question = array("id" => $row['questionNo'], "questionFR" => $row['questionFR'], "questionCommentFR" => $row['questionCommentFR']
+                , "questionDE" => $row['questionDE'], "questionCommentDE" => $row['questionCommentDE'], "axes_idAxe" => $row['axes_idAxe']);
         $questions[] = $question;
     }
     
@@ -111,7 +112,7 @@ function get_axes() {
     $rows = $result->fetchAll();
 
     foreach ($rows as $row) {
-        $axe = array("id" => $row['idAxe'], "name" => $row['name']);
+        $axe = array("id" => $row['idAxe'], "nameFR" => $row['nameFR'], "nameDE" => $row['nameDE']);
         $axes[] = $axe;
     }
     
