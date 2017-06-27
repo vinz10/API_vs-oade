@@ -10,7 +10,7 @@ $lang = array();
 // MESSAGES
 define("MSG_CONNECTION_FAIL", "Verbindung fehlgeschlagen");
 define("MSG_ERROR", "Fehler!");
-define("MSG_INCORRECT_PWD", "Falscher Benutzername oder falsches Kennwort.");
+define("MSG_INCORRECT_PWD", "Falscher Benutzername oder falsches Passwort.");
 define("MSG_WARNING", "Warnung!");
 define("MSG_PROJECT_EXIST", "Das Projekt existiert bereits.");
 define("MSG_INFO", "Informationen!");
@@ -19,7 +19,7 @@ define("MSG_NO_PROJECT", "Es gibt kein existierendes Projekt für diese Stadt.")
 
 // MENU
 define("MENU_DASHBOARD", "Armaturenbrett");
-define("MENU_PHASE1", "Umfrage");
+define("MENU_PHASE1", "Fragebogen");
 define("MENU_PHASE2", "Wertzuwachs");
 define("MENU_PHASE3", "Potenzielle Konflikte");
 define("MENU_PHASE4", "Gewichtung");
@@ -27,13 +27,13 @@ define("MENU_PHASE5", "Kohärenz");
 define("MENU_PHASE6", "Optimierung");
 define("MENU_USERS", "Sieh Benutzer");
 define("MENU_SETTINGS", "Einstellungen");
-define("MENU_LOGIN", "Anmelden");
-define("MENU_LOGOUT", "Ausloggen");
+define("MENU_LOGIN", "Verbinden");
+define("MENU_LOGOUT", "Abschalten");
 
 // HOME
 define("HOME_TITLE", "API VS-OADE Armaturenbrett");
-define("HOME_LOGIN", "ANMELDEN");
-define("HOME_LOGOUT", "AUSLOGGEN");
+define("HOME_LOGIN", "VERBINDEN");
+define("HOME_LOGOUT", "ABSCHALTEN");
 define("HOME_DASHBOARD", "ADMIN ARMATURENBRETT");
 define("HOME_WELCOME", "Willkommen");
 
@@ -41,11 +41,11 @@ define("HOME_WELCOME", "Willkommen");
 define("LOGIN_TITLE", "API VS-OADE Anmelden");
 define("LOGIN_LOGIN", "ANMELDEN");
 define("LOGIN_USERNAME", "Benutzername");
-define("LOGIN_PASSWORD", "Kennwort");
+define("LOGIN_PASSWORD", "Passwort");
 
 // PHASE1
-define("PHASE1_TITLE", "API VS-OADE Umfrage");
-define("PHASE1_PHASE1", "UMFRAGE");
+define("PHASE1_TITLE", "API VS-OADE Fragebogen");
+define("PHASE1_PHASE1", "FRAGEBOGEN");
 define("PHASE1_QUESTION", "Frage");
 
 // PHASE2
