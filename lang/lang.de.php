@@ -16,6 +16,10 @@ define("MSG_PROJECT_EXIST", "Das Projekt existiert bereits.");
 define("MSG_INFO", "Informationen!");
 define("MSG_CONNECT", "Verbinden Sie Sie bitte.");
 define("MSG_NO_PROJECT", "Es gibt kein existierendes Projekt für diese Stadt.");
+define("MSG_MODIF", "Änderung korrekt.");
+define("MSG_DELETE", "Unterdrückung korrekt.");
+define("MSG_INSERT", "Einfügung korrekt.");
+define("MSG_SUCCESS", "Erfolg!");
 
 // MENU
 define("MENU_DASHBOARD", "Armaturenbrett");
@@ -43,10 +47,23 @@ define("LOGIN_LOGIN", "ANMELDEN");
 define("LOGIN_USERNAME", "Benutzername");
 define("LOGIN_PASSWORD", "Passwort");
 
+// EDIT
+define("EDIT_TITLE", "API VS-OADE Veränderung");
+define("EDIT_EDIT", "FRAGE VERÄNDERUNG");
+define("EDIT_AXE", "Achse");
+
+// ADD
+define("ADD_TITLE", "API VS-OADE Hinzufügen");
+define("ADD_ADD", "QUESTION HINZUFÜGEN");
+
 // PHASE1
 define("PHASE1_TITLE", "API VS-OADE Fragebogen");
 define("PHASE1_PHASE1", "FRAGEBOGEN");
 define("PHASE1_QUESTION", "Frage");
+define("PHASE1_COMMENT", "Kommentar");
+define("PHASE1_ADD", "Hinzufügen");
+define("PHASE1_EDIT", "Veränderung");
+define("PHASE1_DELETE", "Entfernen");
 
 // PHASE2
 define("PHASE2_TITLE", "API VS-OADE Wertzuwachs");

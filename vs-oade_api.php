@@ -72,31 +72,40 @@ function get_questions_by_id($id) {
 
     switch ($id) {
         case 1:
-            $query = "SELECT * FROM questions WHERE questionNo LIKE '1.%' OR questionNo LIKE '2.%';";
+            $query = "SELECT * FROM questions WHERE questionNo LIKE '1.%' OR questionNo LIKE '2.%' 
+                ORDER BY 1*SUBSTRING_INDEX(questionNo, '.', 1) ASC, 1*SUBSTRING_INDEX(questionNo, '.', -1) ASC;";
             break;
         case 2:
-            $query = "SELECT * FROM questions WHERE questionNo LIKE '2.%';";
+            $query = "SELECT * FROM questions WHERE questionNo LIKE '2.%'
+                ORDER BY 1*SUBSTRING_INDEX(questionNo, '.', 1) ASC, 1*SUBSTRING_INDEX(questionNo, '.', -1) ASC;";
             break;
         case 3:
-            $query = "SELECT * FROM questions WHERE questionNo LIKE '3.%';";
+            $query = "SELECT * FROM questions WHERE questionNo LIKE '3.%'
+                ORDER BY 1*SUBSTRING_INDEX(questionNo, '.', 1) ASC, 1*SUBSTRING_INDEX(questionNo, '.', -1) ASC;";
             break;
         case 4:
-            $query = "SELECT * FROM questions WHERE questionNo LIKE '4.%';";
+            $query = "SELECT * FROM questions WHERE questionNo LIKE '4.%'
+                ORDER BY 1*SUBSTRING_INDEX(questionNo, '.', 1) ASC, 1*SUBSTRING_INDEX(questionNo, '.', -1) ASC;";
             break;
         case 5:
-            $query = "SELECT * FROM questions WHERE questionNo LIKE '5.%';";
+            $query = "SELECT * FROM questions WHERE questionNo LIKE '5.%'
+                ORDER BY 1*SUBSTRING_INDEX(questionNo, '.', 1) ASC, 1*SUBSTRING_INDEX(questionNo, '.', -1) ASC;";
             break;
         case 6:
-            $query = "SELECT * FROM questions WHERE questionNo LIKE '6.%';";
+            $query = "SELECT * FROM questions WHERE questionNo LIKE '6.%'
+                ORDER BY 1*SUBSTRING_INDEX(questionNo, '.', 1) ASC, 1*SUBSTRING_INDEX(questionNo, '.', -1) ASC;";
             break;
         case 7:
-            $query = "SELECT * FROM questions WHERE questionNo LIKE '7.%';";
+            $query = "SELECT * FROM questions WHERE questionNo LIKE '7.%'
+                ORDER BY 1*SUBSTRING_INDEX(questionNo, '.', 1) ASC, 1*SUBSTRING_INDEX(questionNo, '.', -1) ASC;";
             break;
         case 8:
-            $query = "SELECT * FROM questions WHERE questionNo LIKE '8.%';";
+            $query = "SELECT * FROM questions WHERE questionNo LIKE '8.%'
+                ORDER BY 1*SUBSTRING_INDEX(questionNo, '.', 1) ASC, 1*SUBSTRING_INDEX(questionNo, '.', -1) ASC;";
             break;
         case 9:
-            $query = "SELECT * FROM questions WHERE questionNo LIKE '9.%';";
+            $query = "SELECT * FROM questions WHERE questionNo LIKE '9.%'
+                ORDER BY 1*SUBSTRING_INDEX(questionNo, '.', 1) ASC, 1*SUBSTRING_INDEX(questionNo, '.', -1) ASC;";
             break;
     }
 

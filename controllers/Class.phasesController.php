@@ -65,6 +65,35 @@ class phasesController extends Controller {
     }
     
     /**
+     // @method edit()
+     // @desc Method to load the page 'edit.php'
+     */
+    function edit() {
+        
+        // Init
+        $this->init();
+        
+        // Get the question
+        $this->getQuestion();
+        
+        // Get the phase
+        $this->vars['phase'] = intval($_GET['id']);
+    }
+    
+    /**
+     // @method add()
+     // @desc Method to load the page 'add.php'
+     */
+    function add() {
+        
+        // Init
+        $this->init();
+        
+        // Get the phase
+        $this->vars['phase'] = intval($_GET['id']);
+    }
+    
+    /**
      // @method init()
      // @desc Method that initializes variables and check login
      */
@@ -81,54 +110,125 @@ class phasesController extends Controller {
         } 
     }	
     
-    
+    /**
+    // @method getQuestion()
+    // @desc Method that get the question if exist
+    */
+    private function getQuestion() {
+        
+        // Get the id of the question
+        if (isset($_GET['id'])) {
+            $idQuestion = intval($_GET['id']);
+            if ($idQuestion != 0) {
+                $question = Question::getQuestionById($idQuestion);
+                if($question){
+                    $this->data['idQuestion'] = $question->getId();
+                    $this->data['questionNo'] = $question->getQuestionNo();
+                    $this->data['questionFR'] = $question->getQuestionFR();
+                    $this->data['questionCommentFR'] = $question->getQuestionCommentFR();
+                    $this->data['questionDE'] = $question->getQuestionDE();
+                    $this->data['questionCommentDE'] = $question->getQuestionCommentDE();
+                    $this->data['axes_idAxe'] = $question->getAxeId();
+                }
+                else {
+                    $this->redirect('error', 'http404');
+                }
+            }
+        }
+        else {
+            $this->data['idQuestion'] = null;
+            $this->data['questionNo'] = null;
+            $this->data['questionFR'] = null;
+            $this->data['questionCommentFR'] = null;
+            $this->data['questionDE'] = null;
+            $this->data['questionCommentDE'] = null;
+            $this->data['axes_idAxe'] = null;
+        }
+    }
     
     /**
-     // @method validatePhase0()
-     // @desc Method for the validation of phase 0
+     // @method addQuestion()
+     // @desc Method for adding a question
      */
-    function validatePhase0() {
+    function addQuestion() {
 
         // Get data posted by the form
-        $name = $_POST['name'];
-        $description = $_POST['description'];
-        $poLastname = $_POST['poLastname'];
-        $poFirstname = $_POST['poFirstname'];
-        
-        // Get the town Id
-        $login = $_SESSION ['login'];
-        $townId = $login->getId();
-        
-        // Get the id of the project
-        if (isset($_GET['id'])) {
-            $idProject = intval($_GET['id']);
-        }
-        else {
-            $idProject = null;
-        }
+        $questionFR = $_POST['questionFR'];
+        $questionDE = $_POST['questionDE'];
+        $questionCommentFR = $_POST['questionCommentFR'];
+        $questionCommentDE = $_POST['questionCommentDE'];
+        $phase = intval($_GET['phase']);
 
-        // Create the new project
-        $project = new Project($idProject, $name, $description, $poLastname, $poFirstname, $townId);
-        
-        // Check if the name of the project already exists
-        if ($project->existProject($idProject, $name, $townId)) {
-            if ($idProject == null) {
-                $_SESSION['msg'] = MSG_PROJECT_EXIST;
-                $this->redirect('projects', 'phase0');
-                
-            }
-            else {
-                // Update the project
-                $project->updateProject($idProject);
-                $_SESSION['msgSuccess'] = MSG_MODIF;
-                $this->redirect('projects', 'phase0?id=' . $idProject);
-            }
+        if ($phase == 2 || $phase == 4) {
+            $idAxe = $_POST['axe'];
         }
         else {
-            // Save new project into the db
-            $project->insertProject();
-            $this->redirect('projects', 'projects');
+            $idAxe = null;
         }
+        
+        $result = Question::getLastNo($phase);
+        $no = (int) $result[0];
+        $questionNo = $phase . '.' . ++$no;
+
+        // Create the new question
+        $question = new Question(null, $questionNo, $questionFR, $questionCommentFR, $questionDE, $questionCommentDE, $idAxe);
+        
+        // Update the question
+        $question->insertQuestion();
+        $_SESSION['msgSuccess'] = MSG_INSERT;
+        $this->redirect('phases', 'phase' . $phase);
+    }
+    
+    /**
+     // @method modifQuestion()
+     // @desc Method for the modification of a question
+     */
+    function modifQuestion() {
+
+        // Get data posted by the form
+        $questionFR = $_POST['questionFR'];
+        $questionDE = $_POST['questionDE'];
+        $questionCommentFR = $_POST['questionCommentFR'];
+        $questionCommentDE = $_POST['questionCommentDE'];
+        $idQuestion = intval($_GET['id']);
+        $phase = intval($_GET['phase']);
+
+        // Get other data
+        $question = Question::getQuestionById($idQuestion);
+        
+        if ($question->getAxeId()) {
+            $idAxe = $_POST['axe'];
+        }
+        else {
+            $idAxe = null;
+        }
+        
+        $questionNo = $question->getQuestionNo();
+
+        // Create the new question
+        $question = new Question($idQuestion, $questionNo, $questionFR, $questionCommentFR, $questionDE, $questionCommentDE, $idAxe);
+        
+        // Update the question
+        $question->updateQuestion($idQuestion);
+        $_SESSION['msgSuccess'] = MSG_MODIF;
+        $this->redirect('phases', 'phase' . $phase);
+    }
+    
+    /**
+     // @method deleteQuestion()
+     // @desc Method for deleting a question
+     */
+    function deleteQuestion() {
+
+        // Get data posted by the form
+        $idQuestion = intval($_GET['id']);
+        $phase = intval($_GET['phase']);
+        
+        Question::deleteQuestion($idQuestion);
+        
+        $_SESSION['msgSuccess'] = MSG_DELETE;
+        
+        $this->redirect('phases', 'phase' . $phase);
     }
     
     /**
@@ -139,6 +239,25 @@ class phasesController extends Controller {
      */
     public static function getQuestionsByPhaseId($idPhase) {
         return Question::getQuestionsByPhaseId($idPhase);
+    }
+    
+    /**
+     // @method getAxes()
+     // @desc Method that get axes from the DB
+     // @return Axes
+     */
+    public static function getAxes() {
+        return Axe::getAxes();
+    }
+    
+    /**
+     // @method getAxeById()
+     // @desc Method that get an axe by the id of the axe from the DB
+     // @param int $idAxe
+     // @return Axe
+     */
+    public static function getAxeById($idAxe) {
+        return Axe::getAxeById($idAxe);
     }
 }
 

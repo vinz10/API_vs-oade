@@ -111,6 +111,13 @@
                     <hr />
                     
                     <!-- Messages -->
+                    <?php if (!empty($msgSuccess)) : ?>
+                        <div class="members wow agileits w3layouts slideInLeft">
+                            <div class="alert agileits w3layouts alert-success" role="alert">
+                                <strong><?php echo MSG_SUCCESS; ?></strong> <?php echo ' ' . $msgSuccess; ?>
+                            </div>
+                        </div>
+                    <?php endif; ?>
                     
                     <!-- SURVEY -->
                     <div class="col-lg-12">
@@ -118,6 +125,7 @@
                             
                             <?php
                             $questions = phasesController::getQuestionsByPhaseId(1);
+                            $nbrQuestions = count($questions);
                             $i = 0;
 
                             foreach ($questions as $question): $i++; ?>
@@ -135,31 +143,42 @@
                                 <?php if ($i == 1) : ?>
                                     <div id="<?php echo 'collapse' . $i; ?>" class="panel-collapse in" style="height: auto;">
                                         <div class="panel-body">
-                                            <?php if ($lang == 'fr') {
-                                                echo $question->getQuestionFR(); 
-                                            }
-                                            elseif ($lang == 'de') {
-                                                echo $question->getQuestionDE(); 
-                                            }
-                                            ?>
+                                            <?php 
+                                                echo '<b>' . SETTINGS_FRENCH . '</b>: ' . $question->getQuestionFR() . '<br/>'; 
+                                                echo '<b>' . SETTINGS_GERMAN . '</b>: ' . $question->getQuestionDE() . '<hr/>'; 
+                                                echo '<b>' . PHASE1_COMMENT . '</b><br/>';
+                                                echo '<b>' . SETTINGS_FRENCH . '</b>: ' . $question->getQuestionCommentFR() . '<br/>'; 
+                                                echo '<b>' . SETTINGS_GERMAN . '</b>: ' . $question->getQuestionCommentDE() . '<hr/>';
+                                                echo '<a href="' . URL_DIR . 'phases/edit?id=' . $question->getId() . '?phase=1" class="btn btn-warning">' . PHASE1_EDIT . '</a>';
+                                                if ($i == $nbrQuestions) : ?>
+                                                    <input type="checkbox" id="<?php echo 'checkb' . $i; ?>"/>
+                                                    <input type="button" class="btn btn-danger" name="delete" disabled="disabled" id="<?php echo 'delete' . $i; ?>" onclick="location.href='<?php echo URL_DIR . 'phases/deleteQuestion?id=' . $question->getId(); ?>'" value="<?php echo PHASE1_DELETE; ?>" />
+                                                <?php endif; ?>
                                         </div>
                                     </div>
                                 <?php else : ?>
                                     <div id="<?php echo 'collapse' . $i; ?>" class="panel-collapse collapse" style="height: auto;">
                                         <div class="panel-body">
-                                            <?php if ($lang == 'fr') {
-                                                echo $question->getQuestionFR(); 
-                                            }
-                                            elseif ($lang == 'de') {
-                                                echo $question->getQuestionDE(); 
-                                            }
-                                            ?>
+                                            <?php 
+                                                echo '<b>' . SETTINGS_FRENCH . '</b>: ' . $question->getQuestionFR() . '<br/>'; 
+                                                echo '<b>' . SETTINGS_GERMAN . '</b>: ' . $question->getQuestionDE() . '<hr/>'; 
+                                                echo '<b>' . PHASE1_COMMENT . '</b><br/>';
+                                                echo '<b>' . SETTINGS_FRENCH . '</b>: ' . $question->getQuestionCommentFR() . '<br/>'; 
+                                                echo '<b>' . SETTINGS_GERMAN . '</b>: ' . $question->getQuestionCommentDE() . '<hr/>';
+                                                echo '<a href="' . URL_DIR . 'phases/edit?id=' . $question->getId() . '?phase=1" class="btn btn-warning">' . PHASE1_EDIT . '</a>';
+                                                if ($i == $nbrQuestions) : ?>
+                                                    <input type="checkbox" id="<?php echo 'checkb' . $i; ?>"/>
+                                                    <input type="button" class="btn btn-danger" name="delete" disabled="disabled" id="<?php echo 'delete' . $i; ?>" onclick="location.href='<?php echo URL_DIR . 'phases/deleteQuestion?id=' . $question->getId() . '&phase=1'; ?>'" value="<?php echo PHASE1_DELETE; ?>" />
+                                                <?php endif; ?>
                                         </div>
                                     </div>
                                 <?php endif; ?>
                             </div>
 
                             <?php endforeach; ?>
+                            
+                            <br/>
+                            <a href="<?php echo URL_DIR . 'phases/add?id=1'; ?>" class="btn btn-success"><?php echo PHASE1_ADD; ?></a>
                             
                         </div>
                     </div>
@@ -181,6 +200,19 @@
         <script src="../js/jquery-1.10.2.js"></script>
         <script src="../js/bootstrap.min.js"></script>
         <script src="../js/custom.js"></script>
+        <script>
+        var nbrQuesions = <?php echo json_encode($nbrQuestions); ?>;
+        var checker = document.getElementById('checkb' + nbrQuesions);
+        var deletebtn = document.getElementById('delete' + nbrQuesions);
+        // when unchecked or checked, run the function
+        checker.onchange = function(){
+            if(this.checked){
+                deletebtn.disabled = false;
+            } else {
+                deletebtn.disabled = true;
+            }
+        };
+        </script>
         
     </body>
     

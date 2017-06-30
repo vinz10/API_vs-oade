@@ -113,7 +113,7 @@ class Question {
      * @param string $questionCommentDE
      */
     public function setQuestionCommentDE($questionCommentDE){
-        $this->questionCommentFR = $questionCommentDE;
+        $this->questionCommentDE = $questionCommentDE;
     }
     
     /**
@@ -140,20 +140,24 @@ class Question {
         switch ($idPhase) {
             case 4:
                 $id2 = $idPhase+1;
-                $query = "SELECT * FROM questions WHERE questionNo LIKE '$idPhase.%' OR questionNo LIKE '$id2.%';";    
+                $query = "SELECT * FROM questions WHERE questionNo LIKE '$idPhase.%' OR questionNo LIKE '$id2.%'
+                    ORDER BY 1*SUBSTRING_INDEX(questionNo, '.', 1) ASC, 1*SUBSTRING_INDEX(questionNo, '.', -1) ASC;";    
                 break;
             case 5:
                 $id1 = $idPhase+1;
                 $id2 = $idPhase+2;
-                $query = "SELECT * FROM questions WHERE questionNo LIKE '$id1.%' OR questionNo LIKE '$id2.%';";    
+                $query = "SELECT * FROM questions WHERE questionNo LIKE '$id1.%' OR questionNo LIKE '$id2.%'
+                    ORDER BY 1*SUBSTRING_INDEX(questionNo, '.', 1) ASC, 1*SUBSTRING_INDEX(questionNo, '.', -1) ASC;";
                 break;
             case 6:
                 $id1 = $idPhase+2;
                 $id2 = $idPhase+3;
-                $query = "SELECT * FROM questions WHERE questionNo LIKE '$id1.%' OR questionNo LIKE '$id2.%';";    
+                $query = "SELECT * FROM questions WHERE questionNo LIKE '$id1.%' OR questionNo LIKE '$id2.%'
+                    ORDER BY 1*SUBSTRING_INDEX(questionNo, '.', 1) ASC, 1*SUBSTRING_INDEX(questionNo, '.', -1) ASC;";
                 break;
             default:
-                $query = "SELECT * FROM questions WHERE questionNo LIKE '$idPhase.%';";
+                $query = "SELECT * FROM questions WHERE questionNo LIKE '$idPhase.%'
+                    ORDER BY 1*SUBSTRING_INDEX(questionNo, '.', 1) ASC, 1*SUBSTRING_INDEX(questionNo, '.', -1) ASC;";
                 break;
         }
         
@@ -169,5 +173,115 @@ class Question {
 
         return $Questions;
     }
-}
+    
+    /**
+     // @method getQuestionById()
+     // @desc Method that get a question by the id of the question from the DB
+     // @param int $idQuestion
+     // @return Question
+     */
+    public static function getQuestionById($idQuestion){
+        $query = "SELECT * FROM questions WHERE idQuestion='$idQuestion';";
+        $result = SqlConnection::getInstance()->selectDB($query);
+        $row = $result->fetch();
+        
+        if(!$row) {
+            return false;
+        }
 
+        return new Question($row['idQuestion'], $row['questionNo'], $row['questionFR'], $row['questionCommentFR'], $row['questionDE'], $row['questionCommentDE'], $row['axes_idAxe']);
+    }
+    
+    /**
+     // @method getLastNo()
+     // @desc Method that get the last questionNo
+     // @param int $idPhase
+     // @return int lastNo
+     */
+    public static function getLastNo($idPhase){
+        switch ($idPhase) {
+            case 4:
+                $id2 = $idPhase+1;
+                $query = "SELECT 1*SUBSTRING_INDEX(questionNo, '.', -1) AS no FROM questions WHERE questionNo LIKE '$idPhase.%' OR questionNo LIKE '$id2.%'
+                    ORDER BY 1*SUBSTRING_INDEX(questionNo, '.', 1) DESC, 1*SUBSTRING_INDEX(questionNo, '.', -1) DESC LIMIT 1;";
+                break;
+            case 5:
+                $id1 = $idPhase+1;
+                $id2 = $idPhase+2;
+                $query = "SELECT 1*SUBSTRING_INDEX(questionNo, '.', -1) AS no FROM questions WHERE questionNo LIKE '$id1.%' OR questionNo LIKE '$id2.%'
+                    ORDER BY 1*SUBSTRING_INDEX(questionNo, '.', 1) DESC, 1*SUBSTRING_INDEX(questionNo, '.', -1) DESC LIMIT 1;";
+                break;
+            case 6:
+                $id1 = $idPhase+2;
+                $id2 = $idPhase+3;
+                $query = "SELECT 1*SUBSTRING_INDEX(questionNo, '.', -1) AS no FROM questions WHERE questionNo LIKE '$id1.%' OR questionNo LIKE '$id2.%'
+                    ORDER BY 1*SUBSTRING_INDEX(questionNo, '.', 1) DESC, 1*SUBSTRING_INDEX(questionNo, '.', -1) DESC LIMIT 1;";
+                break;
+            default:
+                $query = "SELECT 1*SUBSTRING_INDEX(questionNo, '.', -1) AS no FROM questions WHERE questionNo LIKE '$idPhase.%'
+                ORDER BY 1*SUBSTRING_INDEX(questionNo, '.', 1) DESC, 1*SUBSTRING_INDEX(questionNo, '.', -1) DESC LIMIT 1;";
+                break;
+        }
+        
+        $result = SqlConnection::getInstance()->selectDB($query);
+        $row = $result->fetch();
+        
+        if(!$row) {
+            return false;
+        }
+
+        return $row;
+    }
+    
+    /**
+     // @method insertQuestion()
+     // @desc Method that insert a new Question into the DB
+     // @return PDOStatement
+     */
+    public function insertQuestion(){
+        
+        $sql = SqlConnection::getInstance();
+
+        $query = "INSERT into questions(questionNo, questionFR, questionCommentFR, questionDE, questionCommentDE, axes_idAxe) VALUES(";
+        $query .= $sql->getConn()->quote($this->questionNo) . ', ';
+        $query .= $sql->getConn()->quote($this->questionFR) . ', ';
+        $query .= $sql->getConn()->quote($this->questionCommentFR) . ', ';
+        $query .= $sql->getConn()->quote($this->questionDE) . ', ';
+        $query .= $sql->getConn()->quote($this->questionCommentDE) . ', ';
+        $query .= $sql->getConn()->quote($this->axes_idAxe) . ');';
+
+        return  $sql->executeQuery($query);
+    }
+    
+    /**
+     // @method updateQuestion()
+     // @desc Method that update a question into the DB
+     // @param int $idQuestion
+     // @return PDOStatement
+     */
+    public function updateQuestion($idQuestion){
+        
+        $sql = SqlConnection::getInstance();
+
+        $query = 'UPDATE questions SET questionNo = ' . $sql->getConn()->quote($this->questionNo);
+        $query .= ', questionFR = ' . $sql->getConn()->quote($this->questionFR);
+        $query .= ', questionCommentFR = ' . $sql->getConn()->quote($this->questionCommentFR);
+        $query .= ', questionDE = ' . $sql->getConn()->quote($this->questionDE);
+        $query .= ', questionCommentDE = ' . $sql->getConn()->quote($this->questionCommentDE);
+        $query .= ', axes_idAxe = ' . $sql->getConn()->quote($this->axes_idAxe) . ' WHERE idQuestion = ' . $idQuestion . ';';
+        
+        return  $sql->executeQuery($query);
+    }
+    
+    /**
+     // @method deleteQuestion()
+     // @desc Method that delete a question by its id
+     // @param int $idQuestion
+     */
+    public static function deleteQuestion($idQuestion) {
+        
+        $query = "DELETE FROM questions WHERE idQuestion='$idQuestion'";
+
+        return SqlConnection::getInstance()->deleteDB($query);
+    }
+}
