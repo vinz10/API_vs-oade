@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title><?php echo SETTINGS_TITLE; ?></title>
+        <title><?php echo ADD_TITLE; ?></title>
         
         <!-- Custom StyleSheet -->
         <link href="../css/bootstrap.css" rel="stylesheet" />
@@ -18,8 +18,9 @@
     <?php
     // Initialization of variables
     $msg = $this->vars['msg'];
-    $msgSuccess = $this->vars['msgSuccess'];
+    $msgSuccess = $this->vars['msgSuccess'];	
     $login = $_SESSION ['login'];
+    $lang = $_SESSION['lang'];
     ?>
     
     <body>
@@ -89,7 +90,7 @@
                             <a href="<?php echo URL_DIR . 'users/users'; ?>"><i class="fa fa-users"></i><?php echo MENU_USERS; ?></a>
                         </li>
                         
-                        <li class="active-link">
+                        <li>
                             <a href="<?php echo URL_DIR . 'settings/settings'; ?>"><i class="fa fa-gear"></i><?php echo MENU_SETTINGS; ?></a>
                         </li>
 
@@ -101,43 +102,54 @@
                 </div>
             </nav>
             
-            <!-- USERS -->
+            <!-- ADD -->
             <div id="page-wrapper" >
                 <div id="page-inner">
                     
                     <div class="row">
                         <div class="col-lg-12">
-                            <h2><i class="fa fa-gear"></i> <?php echo SETTINGS_SETTINGS; ?></h2>   
+                            <h2><?php echo ADD_TITLE; ?></h2>   
                         </div>
                     </div> 
                     
                     <hr />
                     
-                    <div class="col-lg-4 col-md-4">
-                        <h5><i class="fa fa-language"></i> <?php echo SETTINGS_LANGAGE; ?></h5>
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <i class="fa fa-language"></i> <?php echo SETTINGS_LANGAGE_CHOOSE; ?>
-                            </div>
-                            <div class="panel-body">
-                                <?php
-                                if (isset ( $_GET ['id'] )) { 
-                                    echo '<a href="' . '?id=' . $_GET ['id'] . '&lang=fr" class="btn btn-default">'. SETTINGS_FRENCH . '</a>';
-                                    echo ' <a href="' . '?id=' . $_GET ['id'] . '&lang=de" class="btn btn-default">'. SETTINGS_GERMAN . '</a>';
-                                }
-                                else { 
-                                    echo '<a href="?lang=fr" class="btn btn-default">' . SETTINGS_FRENCH . '</a>';
-                                    echo ' <a href="?lang=de" class="btn btn-default">' . SETTINGS_GERMAN . '</a>';
-                                }
-                                ?>
-                            </div>
-                            <div class="panel-footer">
-                                <?php echo SETTINGS_LANGAGE; ?>
+                    <!-- Messages -->
+                    <?php if (!empty($msg)) : ?>
+                        <div class="members wow agileits w3layouts slideInLeft">
+                            <div class="alert agileits w3layouts alert-warning" role="alert">
+                                <strong><?php echo MSG_WARNING; ?></strong> <?php echo ' ' . $msg; ?>
                             </div>
                         </div>
-                    </div>
+                    <?php endif; ?>
                     
-                </div>
+                    <!-- ADD -->
+                    <div class="col-lg-12">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <?php echo EDIT_AXE; ?>
+                            </div>
+                            <form action="<?php echo URL_DIR . 'axes/addAxe'; ?>" method="post">
+                                <div class="panel-body">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-list"></i><?php echo ' ' . SETTINGS_FRENCH; ?></span>
+                                        <input type="text" name="nameFR" id="nameFR" class="form-control" required="required" placeholder="<?php echo EDIT_AXE; ?>" 
+                                            value=""/>
+                                    </div>
+                                    <br />
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-list"></i><?php echo ' ' . SETTINGS_GERMAN; ?></i></span>
+                                        <input type="text" name="nameDE" id="nameDE" class="form-control" required="required" placeholder="<?php echo EDIT_AXE; ?>" 
+                                            value=""/>
+                                    </div>
+                                    <hr />
+                                    
+                                    <input type="submit" name="Submit" class="btn btn-success" value="<?php echo PHASE1_ADD; ?>" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>  
+                </div>     
             </div>
         </div>
         
@@ -161,6 +173,7 @@
     // Unset variables
     unset($_SESSION['msg']);
     unset($_SESSION['msgSuccess']);
+    unset($_SESSION['noQuestion']);
     ?>
     
 </html>

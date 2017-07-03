@@ -137,25 +137,8 @@ class Question {
      // @return Questions
      */
     public static function getQuestionsByNo($no) {
-        switch ($no) {
-            /*case 5:
-                $id1 = $idPhase+1;
-                $id2 = $idPhase+2;
-                $query = "SELECT * FROM questions WHERE questionNo LIKE '$id1.%' OR questionNo LIKE '$id2.%'
-                    ORDER BY 1*SUBSTRING_INDEX(questionNo, '.', 1) ASC, 1*SUBSTRING_INDEX(questionNo, '.', -1) ASC;";
-                break;
-            case 6:
-                $id1 = $idPhase+2;
-                $id2 = $idPhase+3;
-                $query = "SELECT * FROM questions WHERE questionNo LIKE '$id1.%' OR questionNo LIKE '$id2.%'
-                    ORDER BY 1*SUBSTRING_INDEX(questionNo, '.', 1) ASC, 1*SUBSTRING_INDEX(questionNo, '.', -1) ASC;";
-                break;*/
-            default:
-                $query = "SELECT * FROM questions WHERE questionNo LIKE '$no.%'
-                    ORDER BY 1*SUBSTRING_INDEX(questionNo, '.', 1) ASC, 1*SUBSTRING_INDEX(questionNo, '.', -1) ASC;";
-                break;
-        }
         
+        $query = "SELECT * FROM questions WHERE questionNo LIKE '$no.%' ORDER BY 1*SUBSTRING_INDEX(questionNo, '.', 1) ASC, 1*SUBSTRING_INDEX(questionNo, '.', -1) ASC;";
         $result = SqlConnection::getInstance()->selectDB($query);
         $Questions = array();
         $rows = $result->fetchAll();

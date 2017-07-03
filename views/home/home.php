@@ -89,6 +89,10 @@
                         </li>
                         
                         <li>
+                            <a href="<?php echo URL_DIR . 'axes/axes'; ?>"><i class="fa fa-list"></i><?php echo MENU_AXES; ?></a>
+                        </li>
+                        
+                        <li>
                             <a href="<?php echo URL_DIR . 'users/users'; ?>"><i class="fa fa-users"></i><?php echo MENU_USERS; ?></a>
                         </li>
                         
@@ -194,6 +198,15 @@
                     </div>
                     
                     <div class="row text-center pad-top">
+                        
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                            <div class="div-square">
+                                <a href="<?php echo URL_DIR . 'axes/axes'; ?>" >
+                                    <i class="fa fa-list fa-5x"></i>
+                                    <h4><?php echo MENU_AXES; ?></h4>
+                                </a>
+                            </div>
+                        </div>
                         
                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
                             <div class="div-square">

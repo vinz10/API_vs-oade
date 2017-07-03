@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title><?php echo SETTINGS_TITLE; ?></title>
+        <title><?php echo AXE_TITLE; ?></title>
         
         <!-- Custom StyleSheet -->
         <link href="../css/bootstrap.css" rel="stylesheet" />
@@ -20,6 +20,7 @@
     $msg = $this->vars['msg'];
     $msgSuccess = $this->vars['msgSuccess'];
     $login = $_SESSION ['login'];
+    $lang = $_SESSION['lang'];
     ?>
     
     <body>
@@ -81,7 +82,7 @@
                             <a href="<?php echo URL_DIR . 'phases/phase6'; ?>"><i class="fa fa-plus-circle"></i><?php echo MENU_PHASE6; ?></a>
                         </li>
                         
-                        <li>
+                        <li class="active-link">
                             <a href="<?php echo URL_DIR . 'axes/axes'; ?>"><i class="fa fa-list"></i><?php echo MENU_AXES; ?></a>
                         </li>
                         
@@ -89,7 +90,7 @@
                             <a href="<?php echo URL_DIR . 'users/users'; ?>"><i class="fa fa-users"></i><?php echo MENU_USERS; ?></a>
                         </li>
                         
-                        <li class="active-link">
+                        <li>
                             <a href="<?php echo URL_DIR . 'settings/settings'; ?>"><i class="fa fa-gear"></i><?php echo MENU_SETTINGS; ?></a>
                         </li>
 
@@ -101,39 +102,73 @@
                 </div>
             </nav>
             
-            <!-- USERS -->
+            <!-- AXES -->
             <div id="page-wrapper" >
                 <div id="page-inner">
                     
                     <div class="row">
                         <div class="col-lg-12">
-                            <h2><i class="fa fa-gear"></i> <?php echo SETTINGS_SETTINGS; ?></h2>   
+                            <h2><i class="fa fa-list"></i> <?php echo AXE_AXE; ?></h2>   
                         </div>
                     </div> 
                     
                     <hr />
                     
-                    <div class="col-lg-4 col-md-4">
-                        <h5><i class="fa fa-language"></i> <?php echo SETTINGS_LANGAGE; ?></h5>
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <i class="fa fa-language"></i> <?php echo SETTINGS_LANGAGE_CHOOSE; ?>
+                    <!-- Messages -->
+                    <?php if (!empty($msgSuccess)) : ?>
+                        <div class="members wow agileits w3layouts slideInLeft">
+                            <div class="alert agileits w3layouts alert-success" role="alert">
+                                <strong><?php echo MSG_SUCCESS; ?></strong> <?php echo ' ' . $msgSuccess; ?>
                             </div>
-                            <div class="panel-body">
-                                <?php
-                                if (isset ( $_GET ['id'] )) { 
-                                    echo '<a href="' . '?id=' . $_GET ['id'] . '&lang=fr" class="btn btn-default">'. SETTINGS_FRENCH . '</a>';
-                                    echo ' <a href="' . '?id=' . $_GET ['id'] . '&lang=de" class="btn btn-default">'. SETTINGS_GERMAN . '</a>';
-                                }
-                                else { 
-                                    echo '<a href="?lang=fr" class="btn btn-default">' . SETTINGS_FRENCH . '</a>';
-                                    echo ' <a href="?lang=de" class="btn btn-default">' . SETTINGS_GERMAN . '</a>';
-                                }
-                                ?>
+                        </div>
+                    <?php endif; ?>
+                    
+                    <?php if (!empty($msg)) : ?>
+                        <div class="members wow agileits w3layouts slideInLeft">
+                            <div class="alert agileits w3layouts alert-danger" role="alert">
+                                <strong><?php echo MSG_ERROR; ?></strong> <?php echo ' ' . $msg; ?>
                             </div>
-                            <div class="panel-footer">
-                                <?php echo SETTINGS_LANGAGE; ?>
+                        </div>
+                    <?php endif; ?>
+                    
+                    <!-- AXES -->
+                    <div class="col-lg-12">
+                        <div class="panel-group" id="accordion">
+                            
+                            <?php
+                            $axes = axesController::getAxes();
+                            $nbrAxes = count($axes);
+                            $i = 0;
+
+                            foreach ($axes as $axe): $i++; ?>
+                            
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="<?php echo '#collapse' . $i; ?>" class="collapsed"><?php echo EDIT_AXE . ' '. $i . ' <i class="fa fa-plus"></i> <i class="fa fa-pencil"></i> <i class="fa fa-ban"></i>'; ?></a>
+                                    </h4>
+                                </div>
+                                
+                                <?php if ($i == 1) : ?>
+                                    <div id="<?php echo 'collapse' . $i; ?>" class="panel-collapse in" style="height: auto;">
+                                <?php else : ?>
+                                    <div id="<?php echo 'collapse' . $i; ?>" class="panel-collapse collapse" style="height: auto;">
+                                <?php endif; ?>
+                                        
+                                    <div class="panel-body">
+                                        <?php 
+                                        echo '<b>' . SETTINGS_FRENCH . '</b>: ' . $axe->getNameFR() . '<br/>'; 
+                                        echo '<b>' . SETTINGS_GERMAN . '</b>: ' . $axe->getNameDE() . '<hr/>'; 
+                                        ?>
+                                        <a href="<?php echo URL_DIR . 'axes/add'; ?>" class="btn btn-success"><?php echo PHASE1_ADD; ?></a>
+                                        <a href="<?php echo URL_DIR . 'axes/edit?id=' . $axe->getId(); ?>" class="btn btn-warning"><?php echo PHASE1_EDIT; ?></a>
+                                        <a href="<?php echo URL_DIR . 'axes/deleteAxe?id=' . $axe->getId(); ?>" class="btn btn-danger"><?php echo  PHASE1_DELETE; ?></a>
+                                    </div>
+                                </div>
+                                
                             </div>
+
+                            <?php endforeach; ?>    
                         </div>
                     </div>
                     

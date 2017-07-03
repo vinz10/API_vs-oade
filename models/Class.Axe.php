@@ -99,4 +99,91 @@ class Axe {
 
         return new Axe($row['idAxe'], $row['nameFR'], $row['nameDE']);
     }
+    
+    /**
+     // @method insertAxe()
+     // @desc Method that insert a new Axe into the DB
+     // @return PDOStatement
+     */
+    public function insertAxe(){
+        
+        $sql = SqlConnection::getInstance();
+
+        $query = "INSERT into axes(nameFR, nameDE) VALUES(";
+        $query .= $sql->getConn()->quote($this->nameFR) . ', ';
+        $query .= $sql->getConn()->quote($this->nameDE) . ');';
+
+        return  $sql->executeQuery($query);
+    }
+    
+    /**
+     // @method updateAxe()
+     // @desc Method that update an axe into the DB
+     // @param int $idAxe
+     // @return PDOStatement
+     */
+    public function updateAxe($idAxe){
+        
+        $sql = SqlConnection::getInstance();
+
+        $query = 'UPDATE axes SET nameFR = ' . $sql->getConn()->quote($this->nameFR);
+        $query .= ', nameDE = ' . $sql->getConn()->quote($this->nameDE) . ' WHERE idAxe = ' . $idAxe . ';';
+        
+        return  $sql->executeQuery($query);
+    }
+    
+    /**
+     // @method deleteAxe()
+     // @desc Method that delete an axe by its id
+     // @param int $idAxe
+     */
+    public static function deleteAxe($idAxe) {
+        
+        $query = "DELETE FROM axes WHERE idAxe='$idAxe'";
+
+        return SqlConnection::getInstance()->deleteDB($query);
+    }
+    
+    /**
+     // @method existAxe()
+     // @desc Method that check if an axe already exists
+     // @param string $nameFR
+     // @param string $nameDE
+     // @return boolean
+     */
+    public static function existAxe($nameFR, $nameDE) {
+        
+        $sql = SqlConnection::getInstance();
+        
+        $query = "SELECT * FROM axes WHERE nameFR='$nameFR' OR nameDE='$nameDE';";
+        
+        $result = $sql->selectDB($query);
+        $row = $result->fetch();
+        if(!$row) { 
+            return false;
+        }
+
+        return true;
+    }
+    
+    /**
+     // @method checkLinks()
+     // @desc Method that check if an axe is related to a question
+     // @param int $idAxe
+     // @return boolean
+     */
+    public static function checkLinks($idAxe) {
+        
+        $sql = SqlConnection::getInstance();
+        
+        $query = "SELECT * FROM questions WHERE axes_idAxe='$idAxe';";
+        
+        $result = $sql->selectDB($query);
+        $row = $result->fetch();
+        if(!$row) { 
+            return false;
+        }
+
+        return true;
+    }
 }

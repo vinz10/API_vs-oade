@@ -11,8 +11,10 @@ $lang = array();
 define("MSG_CONNECTION_FAIL", "Connection failed");
 define("MSG_ERROR", "Erreur!");
 define("MSG_INCORRECT_PWD", "Utilisateur ou mot de passe incorrect.");
+define("MSG_TOTAL_AXE", "Nombre d'axes maximal atteint.");
+define("MSG_DELETE_AXE_IMPOSSIBLE", "Impossible de supprimer cet axe car il est lié à une question.");
 define("MSG_WARNING", "Attention!");
-define("MSG_PROJECT_EXIST", "Le projet existe déjà.");
+define("MSG_AXE_EXIST", "L'axe existe déjà.");
 define("MSG_INFO", "Information!");
 define("MSG_CONNECT", "Veuillez vous connecter.");
 define("MSG_NO_PROJECT", "Il n'y a aucun projet existant sur cette commune.");
@@ -29,6 +31,7 @@ define("MENU_PHASE3", "Conflits potentiels");
 define("MENU_PHASE4", "Pondération");
 define("MENU_PHASE5", "Cohérence");
 define("MENU_PHASE6", "Optimisation");
+define("MENU_AXES", "Axes");
 define("MENU_USERS", "Voir les utilisateurs");
 define("MENU_SETTINGS", "Paramètres");
 define("MENU_LOGIN", "Connexion");
@@ -84,6 +87,10 @@ define("PHASE5_PHASE5", "COHÉRENCE");
 // PHASE6
 define("PHASE6_TITLE", "API VS-OADE Optimisation");
 define("PHASE6_PHASE6", "OPTIMISATION");
+
+// AXE
+define("AXE_TITLE", "API VS-OADE Axes");
+define("AXE_AXE", "AXES");
 
 // USERS
 define("USERS_TITLE", "API VS-OADE Utilisateurs");

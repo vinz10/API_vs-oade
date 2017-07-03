@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title><?php echo SETTINGS_TITLE; ?></title>
+        <title><?php echo EDIT_TITLE; ?></title>
         
         <!-- Custom StyleSheet -->
         <link href="../css/bootstrap.css" rel="stylesheet" />
@@ -19,7 +19,9 @@
     // Initialization of variables
     $msg = $this->vars['msg'];
     $msgSuccess = $this->vars['msgSuccess'];
+    $axe = new Axe($this->data ['idAxe'], $this->data ['nameFR'], $this->data ['nameDE']);	
     $login = $_SESSION ['login'];
+    $lang = $_SESSION['lang'];
     ?>
     
     <body>
@@ -89,7 +91,7 @@
                             <a href="<?php echo URL_DIR . 'users/users'; ?>"><i class="fa fa-users"></i><?php echo MENU_USERS; ?></a>
                         </li>
                         
-                        <li class="active-link">
+                        <li>
                             <a href="<?php echo URL_DIR . 'settings/settings'; ?>"><i class="fa fa-gear"></i><?php echo MENU_SETTINGS; ?></a>
                         </li>
 
@@ -101,43 +103,48 @@
                 </div>
             </nav>
             
-            <!-- USERS -->
+            <!-- SURVEY -->
             <div id="page-wrapper" >
                 <div id="page-inner">
                     
                     <div class="row">
                         <div class="col-lg-12">
-                            <h2><i class="fa fa-gear"></i> <?php echo SETTINGS_SETTINGS; ?></h2>   
+                            <h2><?php echo EDIT_EDIT; ?></h2>   
                         </div>
                     </div> 
                     
                     <hr />
                     
-                    <div class="col-lg-4 col-md-4">
-                        <h5><i class="fa fa-language"></i> <?php echo SETTINGS_LANGAGE; ?></h5>
+                    <!-- Messages -->
+                    
+                    <!-- EDIT -->
+                    <div class="col-lg-12">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
-                                <i class="fa fa-language"></i> <?php echo SETTINGS_LANGAGE_CHOOSE; ?>
+                                <?php echo EDIT_AXE . ' ' . $axe->getId(); ?>
                             </div>
-                            <div class="panel-body">
-                                <?php
-                                if (isset ( $_GET ['id'] )) { 
-                                    echo '<a href="' . '?id=' . $_GET ['id'] . '&lang=fr" class="btn btn-default">'. SETTINGS_FRENCH . '</a>';
-                                    echo ' <a href="' . '?id=' . $_GET ['id'] . '&lang=de" class="btn btn-default">'. SETTINGS_GERMAN . '</a>';
-                                }
-                                else { 
-                                    echo '<a href="?lang=fr" class="btn btn-default">' . SETTINGS_FRENCH . '</a>';
-                                    echo ' <a href="?lang=de" class="btn btn-default">' . SETTINGS_GERMAN . '</a>';
-                                }
-                                ?>
-                            </div>
-                            <div class="panel-footer">
-                                <?php echo SETTINGS_LANGAGE; ?>
-                            </div>
+                            <form action="<?php echo URL_DIR . 'axes/modifAxe?id=' . $axe->getId(); ?>" method="post">
+                                <div class="panel-body">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-list"></i><?php echo ' ' . SETTINGS_FRENCH; ?></span>
+                                        <input type="text" name="nameFR" id="nameFR" class="form-control" required="required" placeholder="<?php echo EDIT_AXE; ?>" 
+                                            value="<?php echo $axe->getNameFR(); ?>"/>
+                                    </div>
+                                    <br />
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-list"></i><?php echo ' ' . SETTINGS_GERMAN; ?></i></span>
+                                        <input type="text" name="nameDE" id="nameDE" class="form-control" required="required" placeholder="<?php echo EDIT_AXE; ?>" 
+                                            value="<?php echo $axe->getNameDE(); ?>"/>
+                                    </div>
+                                    <hr />
+                                    <input type="submit" name="Submit" class="btn btn-warning" value="<?php echo PHASE1_EDIT; ?>" />
+                                </div>
+                            </form>
                         </div>
                     </div>
                     
                 </div>
+                    
             </div>
         </div>
         
