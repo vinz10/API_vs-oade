@@ -77,7 +77,7 @@ class phasesController extends Controller {
         $this->getQuestion();
         
         // Get the phase
-        $this->vars['phase'] = intval($_GET['id']);
+        $this->vars['phase'] = intval($_GET['phase']);
     }
     
     /**
@@ -89,8 +89,9 @@ class phasesController extends Controller {
         // Init
         $this->init();
         
-        // Get the phase
-        $this->vars['phase'] = intval($_GET['id']);
+        // Get the phase and the noQuestion
+        $this->vars['phase'] = intval($_GET['phase']);
+        $this->vars['noQuestion'] = intval($_GET['noQuestion']);
     }
     
     /**
@@ -157,23 +158,25 @@ class phasesController extends Controller {
         $questionDE = $_POST['questionDE'];
         $questionCommentFR = $_POST['questionCommentFR'];
         $questionCommentDE = $_POST['questionCommentDE'];
+        $noQuestion = intval($_GET['noQuestion']);
         $phase = intval($_GET['phase']);
 
-        if ($phase == 2 || $phase == 4) {
+        if ($noQuestion == 2) {
             $idAxe = $_POST['axe'];
         }
         else {
             $idAxe = null;
         }
         
-        $result = Question::getLastNo($phase);
+        $result = Question::getLastNo($noQuestion);
         $no = (int) $result[0];
-        $questionNo = $phase . '.' . ++$no;
+        
+        $questionNo = $noQuestion . '.' . ++$no;
 
         // Create the new question
         $question = new Question(null, $questionNo, $questionFR, $questionCommentFR, $questionDE, $questionCommentDE, $idAxe);
         
-        // Update the question
+        // Insert the question
         $question->insertQuestion();
         $_SESSION['msgSuccess'] = MSG_INSERT;
         $this->redirect('phases', 'phase' . $phase);
@@ -232,32 +235,13 @@ class phasesController extends Controller {
     }
     
     /**
-     // @method getQuestionsByPhaseId()
-     // @desc Method that get a question by the id of the phase from the DB
-     // @param int $idPhase
+     // @method getQuestionsByNo()
+     // @desc Method that get questions by the no of question from the DB
+     // @param int $no
      // @return Questions
      */
-    public static function getQuestionsByPhaseId($idPhase) {
-        return Question::getQuestionsByPhaseId($idPhase);
-    }
-    
-    /**
-     // @method getAxes()
-     // @desc Method that get axes from the DB
-     // @return Axes
-     */
-    public static function getAxes() {
-        return Axe::getAxes();
-    }
-    
-    /**
-     // @method getAxeById()
-     // @desc Method that get an axe by the id of the axe from the DB
-     // @param int $idAxe
-     // @return Axe
-     */
-    public static function getAxeById($idAxe) {
-        return Axe::getAxeById($idAxe);
+    public static function getQuestionsByNo($no) {
+        return Question::getQuestionsByNo($no);
     }
 }
 

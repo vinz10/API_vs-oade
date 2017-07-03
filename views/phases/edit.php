@@ -121,7 +121,7 @@
                             <div class="panel-heading">
                                 <?php echo PHASE1_QUESTION . ' ' . $question->getQuestionNo(); ?>
                             </div>
-                            <form action="<?php echo URL_DIR . 'phases/modifQuestion?id=' . $question->getId() . '&phase=1'; ?>" method="post">
+                            <form action="<?php echo URL_DIR . 'phases/modifQuestion?id=' . $question->getId() . '&phase=' . $phase; ?>" method="post">
                                 <div class="panel-body">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-question-circle"></i><?php echo ' ' . SETTINGS_FRENCH; ?></span>
@@ -138,21 +138,31 @@
                                     <?php echo '<b>' . PHASE1_COMMENT . '</b><br/>'; ?>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-comment"></i><?php echo ' ' . SETTINGS_FRENCH; ?></span>
-                                        <input type="text" name="questionCommentFR" id="questionCommentFR" class="form-control" placeholder="<?php echo PHASE1_COMMENT; ?>" 
-                                            value="<?php echo $question->getQuestionCommentFR(); ?>"/>
+                                        <?php if ($phase == 2) : ?>
+                                            <input type="text" name="questionCommentFR" id="questionCommentFR" class="form-control" required="required" placeholder="<?php echo PHASE1_COMMENT; ?>" 
+                                                value="<?php echo $question->getQuestionCommentFR(); ?>"/>
+                                        <?php else : ?>
+                                            <input type="text" name="questionCommentFR" id="questionCommentFR" class="form-control" placeholder="<?php echo PHASE1_COMMENT; ?>" 
+                                                value="<?php echo $question->getQuestionCommentFR(); ?>"/>
+                                        <?php endif; ?>
                                     </div>
                                     <br />
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-comment"></i><?php echo ' ' . SETTINGS_GERMAN; ?></i></span>
-                                        <input type="text" name="questionCommentDE" id="questionCommentDE" class="form-control" placeholder="<?php echo PHASE1_COMMENT; ?>" 
-                                            value="<?php echo $question->getQuestionCommentDE(); ?>"/>
+                                        <?php if ($phase == 2) : ?>
+                                            <input type="text" name="questionCommentDE" id="questionCommentDE" class="form-control" required="required" placeholder="<?php echo PHASE1_COMMENT; ?>" 
+                                                value="<?php echo $question->getQuestionCommentDE(); ?>"/>
+                                        <?php else : ?>
+                                            <input type="text" name="questionCommentDE" id="questionCommentDE" class="form-control" placeholder="<?php echo PHASE1_COMMENT; ?>" 
+                                                value="<?php echo $question->getQuestionCommentDE(); ?>"/>
+                                        <?php endif; ?>
                                     </div>
                                     <hr />
                                     <?php if ($question->getAxeId()) : ?>
                                         <?php echo '<i class="fa fa-list"></i> <b>' . EDIT_AXE . '</b><br/>'; ?>
                                         <div class="input-group">   
                                             <?php 
-                                            $axes = phasesController::getAxes();
+                                            $axes = axesController::getAxes();
 
                                             foreach ($axes as $axe) {
                                                 if($axe->getId() == $question->getAxeId()) {
@@ -207,7 +217,7 @@
     // Unset variables
     unset($_SESSION['msg']);
     unset($_SESSION['msgSuccess']);
-    unset($_SESSION['phase']);
+    unset($_SESSION['noQuestion']);
     ?>
     
 </html>

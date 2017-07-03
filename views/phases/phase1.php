@@ -104,7 +104,7 @@
                     
                     <div class="row">
                         <div class="col-lg-12">
-                            <h2><?php echo PHASE1_PHASE1; ?></h2>   
+                            <h2><i class="fa fa-question-circle"></i> <?php echo PHASE1_PHASE1; ?></h2>   
                         </div>
                     </div> 
                     
@@ -124,7 +124,7 @@
                         <div class="panel-group" id="accordion">
                             
                             <?php
-                            $questions = phasesController::getQuestionsByPhaseId(1);
+                            $questions = phasesController::getQuestionsByNo(1);
                             $nbrQuestions = count($questions);
                             $i = 0;
 
@@ -134,9 +134,11 @@
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
                                         <?php if ($i == 1) : ?>
-                                            <a data-toggle="collapse" data-parent="#accordion" href="<?php echo '#collapse' . $i; ?>" class="collapsed"><?php echo PHASE1_QUESTION . ' '. $question->getQuestionNo(); ?></a>
+                                            <a data-toggle="collapse" data-parent="#accordion" href="<?php echo '#collapse' . $i; ?>" class="collapsed"><?php echo PHASE1_QUESTION . ' '. $question->getQuestionNo() . ' <i class="fa fa-pencil"></i>'; ?></a>
+                                        <?php elseif ($i == $nbrQuestions) : ?>
+                                            <a data-toggle="collapse" data-parent="#accordion" href="<?php echo '#collapse' . $i; ?>" ><?php echo PHASE1_QUESTION . ' '. $question->getQuestionNo() . ' <i class="fa fa-plus"></i> <i class="fa fa-pencil"></i> <i class="fa fa-ban"></i>'; ?></a>
                                         <?php else : ?>
-                                            <a data-toggle="collapse" data-parent="#accordion" href="<?php echo '#collapse' . $i; ?>" ><?php echo PHASE1_QUESTION . ' '. $question->getQuestionNo(); ?></a>
+                                            <a data-toggle="collapse" data-parent="#accordion" href="<?php echo '#collapse' . $i; ?>" ><?php echo PHASE1_QUESTION . ' '. $question->getQuestionNo() . ' <i class="fa fa-pencil"></i>'; ?></a>
                                         <?php endif; ?>
                                     </h4>
                                 </div>
@@ -149,10 +151,13 @@
                                                 echo '<b>' . PHASE1_COMMENT . '</b><br/>';
                                                 echo '<b>' . SETTINGS_FRENCH . '</b>: ' . $question->getQuestionCommentFR() . '<br/>'; 
                                                 echo '<b>' . SETTINGS_GERMAN . '</b>: ' . $question->getQuestionCommentDE() . '<hr/>';
-                                                echo '<a href="' . URL_DIR . 'phases/edit?id=' . $question->getId() . '?phase=1" class="btn btn-warning">' . PHASE1_EDIT . '</a>';
                                                 if ($i == $nbrQuestions) : ?>
+                                                    <a href="<?php echo URL_DIR . 'phases/add?noQuestion=1&phase=1'; ?>" class="btn btn-success"><?php echo PHASE1_ADD; ?></a>
+                                                    <a href="<?php echo URL_DIR . 'phases/edit?id=' . $question->getId() . '&phase=1'; ?>" class="btn btn-warning"><?php echo PHASE1_EDIT; ?></a>
                                                     <input type="checkbox" id="<?php echo 'checkb' . $i; ?>"/>
-                                                    <input type="button" class="btn btn-danger" name="delete" disabled="disabled" id="<?php echo 'delete' . $i; ?>" onclick="location.href='<?php echo URL_DIR . 'phases/deleteQuestion?id=' . $question->getId(); ?>'" value="<?php echo PHASE1_DELETE; ?>" />
+                                                    <input type="button" class="btn btn-danger" name="delete" disabled="disabled" id="<?php echo 'delete' . $i; ?>" onclick="location.href='<?php echo URL_DIR . 'phases/deleteQuestion?id=' . $question->getId() . '&phase=1'; ?>'" value="<?php echo  PHASE1_DELETE; ?>" />
+                                                <?php else : ?>
+                                                    <a href="<?php echo URL_DIR . 'phases/edit?id=' . $question->getId() . '&phase=1'; ?>" class="btn btn-warning"><?php echo PHASE1_EDIT; ?></a>
                                                 <?php endif; ?>
                                         </div>
                                     </div>
@@ -165,21 +170,20 @@
                                                 echo '<b>' . PHASE1_COMMENT . '</b><br/>';
                                                 echo '<b>' . SETTINGS_FRENCH . '</b>: ' . $question->getQuestionCommentFR() . '<br/>'; 
                                                 echo '<b>' . SETTINGS_GERMAN . '</b>: ' . $question->getQuestionCommentDE() . '<hr/>';
-                                                echo '<a href="' . URL_DIR . 'phases/edit?id=' . $question->getId() . '?phase=1" class="btn btn-warning">' . PHASE1_EDIT . '</a>';
                                                 if ($i == $nbrQuestions) : ?>
+                                                    <a href="<?php echo URL_DIR . 'phases/add?noQuestion=1&phase=1'; ?>" class="btn btn-success"><?php echo PHASE1_ADD; ?></a>
+                                                    <a href="<?php echo URL_DIR . 'phases/edit?id=' . $question->getId() . '&phase=1'; ?>" class="btn btn-warning"><?php echo PHASE1_EDIT; ?></a>
                                                     <input type="checkbox" id="<?php echo 'checkb' . $i; ?>"/>
-                                                    <input type="button" class="btn btn-danger" name="delete" disabled="disabled" id="<?php echo 'delete' . $i; ?>" onclick="location.href='<?php echo URL_DIR . 'phases/deleteQuestion?id=' . $question->getId() . '&phase=1'; ?>'" value="<?php echo PHASE1_DELETE; ?>" />
+                                                    <input type="button" class="btn btn-danger" name="delete" disabled="disabled" id="<?php echo 'delete' . $i; ?>" onclick="location.href='<?php echo URL_DIR . 'phases/deleteQuestion?id=' . $question->getId() . '&phase=1'; ?>'" value="<?php echo  PHASE1_DELETE; ?>" />
+                                                <?php else : ?>
+                                                    <a href="<?php echo URL_DIR . 'phases/edit?id=' . $question->getId() . '&phase=1'; ?>" class="btn btn-warning"><?php echo PHASE1_EDIT; ?></a>
                                                 <?php endif; ?>
                                         </div>
                                     </div>
                                 <?php endif; ?>
                             </div>
 
-                            <?php endforeach; ?>
-                            
-                            <br/>
-                            <a href="<?php echo URL_DIR . 'phases/add?id=1'; ?>" class="btn btn-success"><?php echo PHASE1_ADD; ?></a>
-                            
+                            <?php endforeach; ?>    
                         </div>
                     </div>
                     

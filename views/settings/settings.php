@@ -103,7 +103,7 @@
                     
                     <div class="row">
                         <div class="col-lg-12">
-                            <h2><?php echo SETTINGS_SETTINGS; ?></h2>   
+                            <h2><i class="fa fa-gear"></i> <?php echo SETTINGS_SETTINGS; ?></h2>   
                         </div>
                     </div> 
                     

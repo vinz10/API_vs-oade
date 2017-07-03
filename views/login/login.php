@@ -97,7 +97,7 @@
                     
                     <div class="row">
                         <div class="col-lg-12">
-                            <h2><?php echo LOGIN_LOGIN; ?></h2>   
+                            <h2><i class="fa fa-sign-in"></i> <?php echo LOGIN_LOGIN; ?></h2>   
                         </div>
                     </div> 
                     

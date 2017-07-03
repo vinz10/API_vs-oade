@@ -114,7 +114,7 @@
                     
                     <div class="row">
                         <div class="col-lg-12">
-                            <h2><?php echo HOME_DASHBOARD; ?></h2>   
+                            <h2><i class="fa fa-desktop"></i> <?php echo HOME_DASHBOARD; ?></h2>   
                         </div>
                     </div>              
                     

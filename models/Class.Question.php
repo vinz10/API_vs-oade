@@ -131,19 +131,14 @@ class Question {
     }
     
     /**
-     // @method getQuestionsByPhaseId()
-     // @desc Method that get a question by the id of the phase from the DB
-     // @param int $idPhase
+     // @method getQuestionsByNo()
+     // @desc Method that get a question by the no of question from the DB
+     // @param int $no
      // @return Questions
      */
-    public static function getQuestionsByPhaseId($idPhase) {
-        switch ($idPhase) {
-            case 4:
-                $id2 = $idPhase+1;
-                $query = "SELECT * FROM questions WHERE questionNo LIKE '$idPhase.%' OR questionNo LIKE '$id2.%'
-                    ORDER BY 1*SUBSTRING_INDEX(questionNo, '.', 1) ASC, 1*SUBSTRING_INDEX(questionNo, '.', -1) ASC;";    
-                break;
-            case 5:
+    public static function getQuestionsByNo($no) {
+        switch ($no) {
+            /*case 5:
                 $id1 = $idPhase+1;
                 $id2 = $idPhase+2;
                 $query = "SELECT * FROM questions WHERE questionNo LIKE '$id1.%' OR questionNo LIKE '$id2.%'
@@ -154,9 +149,9 @@ class Question {
                 $id2 = $idPhase+3;
                 $query = "SELECT * FROM questions WHERE questionNo LIKE '$id1.%' OR questionNo LIKE '$id2.%'
                     ORDER BY 1*SUBSTRING_INDEX(questionNo, '.', 1) ASC, 1*SUBSTRING_INDEX(questionNo, '.', -1) ASC;";
-                break;
+                break;*/
             default:
-                $query = "SELECT * FROM questions WHERE questionNo LIKE '$idPhase.%'
+                $query = "SELECT * FROM questions WHERE questionNo LIKE '$no.%'
                     ORDER BY 1*SUBSTRING_INDEX(questionNo, '.', 1) ASC, 1*SUBSTRING_INDEX(questionNo, '.', -1) ASC;";
                 break;
         }
@@ -201,20 +196,8 @@ class Question {
     public static function getLastNo($idPhase){
         switch ($idPhase) {
             case 4:
-                $id2 = $idPhase+1;
-                $query = "SELECT 1*SUBSTRING_INDEX(questionNo, '.', -1) AS no FROM questions WHERE questionNo LIKE '$idPhase.%' OR questionNo LIKE '$id2.%'
-                    ORDER BY 1*SUBSTRING_INDEX(questionNo, '.', 1) DESC, 1*SUBSTRING_INDEX(questionNo, '.', -1) DESC LIMIT 1;";
-                break;
-            case 5:
                 $id1 = $idPhase+1;
-                $id2 = $idPhase+2;
-                $query = "SELECT 1*SUBSTRING_INDEX(questionNo, '.', -1) AS no FROM questions WHERE questionNo LIKE '$id1.%' OR questionNo LIKE '$id2.%'
-                    ORDER BY 1*SUBSTRING_INDEX(questionNo, '.', 1) DESC, 1*SUBSTRING_INDEX(questionNo, '.', -1) DESC LIMIT 1;";
-                break;
-            case 6:
-                $id1 = $idPhase+2;
-                $id2 = $idPhase+3;
-                $query = "SELECT 1*SUBSTRING_INDEX(questionNo, '.', -1) AS no FROM questions WHERE questionNo LIKE '$id1.%' OR questionNo LIKE '$id2.%'
+                $query = "SELECT 1*SUBSTRING_INDEX(questionNo, '.', -1) AS no FROM questions WHERE questionNo LIKE '$id1.%'
                     ORDER BY 1*SUBSTRING_INDEX(questionNo, '.', 1) DESC, 1*SUBSTRING_INDEX(questionNo, '.', -1) DESC LIMIT 1;";
                 break;
             default:

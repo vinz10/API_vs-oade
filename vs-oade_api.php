@@ -84,7 +84,7 @@ function get_questions_by_id($id) {
                 ORDER BY 1*SUBSTRING_INDEX(questionNo, '.', 1) ASC, 1*SUBSTRING_INDEX(questionNo, '.', -1) ASC;";
             break;
         case 4:
-            $query = "SELECT * FROM questions WHERE questionNo LIKE '4.%'
+            $query = "SELECT * FROM questions WHERE questionNo LIKE '2.%'
                 ORDER BY 1*SUBSTRING_INDEX(questionNo, '.', 1) ASC, 1*SUBSTRING_INDEX(questionNo, '.', -1) ASC;";
             break;
         case 5:
