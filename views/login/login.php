@@ -116,6 +116,14 @@
                         </div>    
                     </div>
                     
+                    <?php if (!empty($msg)) : ?>
+                        <div class="members wow agileits w3layouts slideInLeft">
+                            <div class="alert agileits w3layouts alert-danger" role="alert">
+                                <strong><?php echo MSG_ERROR; ?></strong> <?php echo ' ' . $msg; ?>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                    
                     <!-- Login form -->
                     <form action="<?php echo URL_DIR . 'login/connection'; ?>" method="post">
                         <div class="row">
