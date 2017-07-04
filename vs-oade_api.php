@@ -122,6 +122,30 @@ function get_questions_by_id($id) {
 }
 
 /**
+* @method get_question_by_id()
+* @desc Method that get questions by id
+* @param $id
+* @return $questions
+*/
+function get_question_by_id($id) {
+    
+    $questions = array();
+
+    $query = "SELECT * FROM questions WHERE questionNo='$id';";
+            
+    $result = SqlConnection::getInstance()->selectDB($query);
+    $row = $result->fetch();
+    if (!$row) {
+        return false;
+    }
+
+    $question = array("id" => $row['questionNo'], "questionFR" => $row['questionFR'], "questionCommentFR" => $row['questionCommentFR']
+                , "questionDE" => $row['questionDE'], "questionCommentDE" => $row['questionCommentDE'], "axes_idAxe" => $row['axes_idAxe']);
+    
+    return $question;
+}
+
+/**
 * @method get_axe_by_id()
 * @desc Method that get questions by id
 * @param $id
@@ -159,7 +183,7 @@ function get_axes() {
     return $axes;
 }
 
-$possible_url = array("get_axes", "get_axe_by_id", "get_questions");
+$possible_url = array("get_axes", "get_axe_by_id", "get_questions", "get_question_by_id");
 
 $value = "An error has occurred";
 
@@ -169,6 +193,14 @@ if (isset($_GET["action"]) && in_array($_GET["action"], $possible_url)) {
         case "get_questions":
             if (isset($_GET["id"])) {
                 $value = get_questions_by_id($_GET["id"]);
+            }
+            else {
+                $value = "Missing argument";
+            }
+            break;
+        case "get_question_by_id":
+            if (isset($_GET["id"])) {
+                $value = get_question_by_id($_GET["id"]);
             }
             else {
                 $value = "Missing argument";
