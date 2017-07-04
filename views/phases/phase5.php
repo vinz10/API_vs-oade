@@ -21,6 +21,8 @@
     $msgSuccess = $this->vars['msgSuccess'];
     $login = $_SESSION ['login'];
     $lang = $_SESSION['lang'];
+    $nbrQuestions1 = 0;
+    $nbrQuestions2 = 0;
     ?>
     
     <body>
@@ -129,91 +131,99 @@
                             
                             <?php
                             $questions = phasesController::getQuestionsByNo(6);
-                            $nbrQuestions1 = count($questions);
-                            $i = 0;
+                            if ($questions) :
+                                $nbrQuestions1 = count($questions);
+                                $i = 0;
 
-                            foreach ($questions as $question): $i++; ?>
-                            
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <?php if ($i == 1) : ?>
-                                            <a data-toggle="collapse" data-parent="#accordion" href="<?php echo '#collapse' . $i; ?>" class="collapsed"><?php echo PHASE1_QUESTION . ' '. $question->getQuestionNo() . ' <i class="fa fa-pencil"></i>'; ?></a>
-                                        <?php elseif ($i == $nbrQuestions1) : ?>
-                                            <a data-toggle="collapse" data-parent="#accordion" href="<?php echo '#collapse' . $i; ?>" ><?php echo PHASE1_QUESTION . ' '. $question->getQuestionNo() . ' <i class="fa fa-plus"></i> <i class="fa fa-pencil"></i> <i class="fa fa-ban"></i>'; ?></a>
-                                        <?php else : ?>
-                                            <a data-toggle="collapse" data-parent="#accordion" href="<?php echo '#collapse' . $i; ?>" ><?php echo PHASE1_QUESTION . ' '. $question->getQuestionNo() . ' <i class="fa fa-pencil"></i>'; ?></a>
-                                        <?php endif; ?>
-                                    </h4>
-                                </div>
-                                <?php if ($i == 1) : ?>
-                                <div id="<?php echo 'collapse' . $i; ?>" class="panel-collapse in" style="height: auto;">
-                                <?php else : ?>
-                                <div id="<?php echo 'collapse' . $i; ?>" class="panel-collapse collapse" style="height: auto;">
-                                <?php endif; ?>
-                                    <div class="panel-body">
-                                        <?php 
-                                            echo '<b>' . SETTINGS_FRENCH . '</b>: ' . $question->getQuestionFR() . '<br/>'; 
-                                            echo '<b>' . SETTINGS_GERMAN . '</b>: ' . $question->getQuestionDE() . '<hr/>'; 
-                                            echo '<b>' . PHASE1_COMMENT . '</b><br/>';
-                                            echo '<b>' . SETTINGS_FRENCH . '</b>: ' . $question->getQuestionCommentFR() . '<br/>'; 
-                                            echo '<b>' . SETTINGS_GERMAN . '</b>: ' . $question->getQuestionCommentDE() . '<hr/>';
-                                            if ($i == $nbrQuestions1) : ?>
-                                                <a href="<?php echo URL_DIR . 'phases/add?noQuestion=6&phase=5'; ?>" class="btn btn-success"><?php echo PHASE1_ADD; ?></a>
-                                                <a href="<?php echo URL_DIR . 'phases/edit?id=' . $question->getId() . '&phase=5'; ?>" class="btn btn-warning"><?php echo PHASE1_EDIT; ?></a>
-                                                <input type="checkbox" id="<?php echo 'checkb' . $i; ?>"/>
-                                                <input type="button" class="btn btn-danger" name="delete" disabled="disabled" id="<?php echo 'delete' . $i; ?>" onclick="location.href='<?php echo URL_DIR . 'phases/deleteQuestion?id=' . $question->getId() . '&phase=5'; ?>'" value="<?php echo  PHASE1_DELETE; ?>" />
+                                foreach ($questions as $question): $i++; ?>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <?php if ($i == 1) : ?>
+                                                <a data-toggle="collapse" data-parent="#accordion" href="<?php echo '#collapse' . $i; ?>" class="collapsed"><?php echo PHASE1_QUESTION . ' '. $question->getQuestionNo() . ' <i class="fa fa-pencil"></i>'; ?></a>
+                                            <?php elseif ($i == $nbrQuestions1) : ?>
+                                                <a data-toggle="collapse" data-parent="#accordion" href="<?php echo '#collapse' . $i; ?>" ><?php echo PHASE1_QUESTION . ' '. $question->getQuestionNo() . ' <i class="fa fa-plus"></i> <i class="fa fa-pencil"></i> <i class="fa fa-ban"></i>'; ?></a>
                                             <?php else : ?>
-                                                <a href="<?php echo URL_DIR . 'phases/edit?id=' . $question->getId() . '&phase=5'; ?>" class="btn btn-warning"><?php echo PHASE1_EDIT; ?></a>
+                                                <a data-toggle="collapse" data-parent="#accordion" href="<?php echo '#collapse' . $i; ?>" ><?php echo PHASE1_QUESTION . ' '. $question->getQuestionNo() . ' <i class="fa fa-pencil"></i>'; ?></a>
                                             <?php endif; ?>
+                                        </h4>
+                                    </div>
+                                    <?php if ($i == 1) : ?>
+                                    <div id="<?php echo 'collapse' . $i; ?>" class="panel-collapse in" style="height: auto;">
+                                    <?php else : ?>
+                                    <div id="<?php echo 'collapse' . $i; ?>" class="panel-collapse collapse" style="height: auto;">
+                                    <?php endif; ?>
+                                        <div class="panel-body">
+                                            <?php 
+                                                echo '<b>' . SETTINGS_FRENCH . '</b>: ' . $question->getQuestionFR() . '<br/>'; 
+                                                echo '<b>' . SETTINGS_GERMAN . '</b>: ' . $question->getQuestionDE() . '<hr/>'; 
+                                                echo '<b>' . PHASE1_COMMENT . '</b><br/>';
+                                                echo '<b>' . SETTINGS_FRENCH . '</b>: ' . $question->getQuestionCommentFR() . '<br/>'; 
+                                                echo '<b>' . SETTINGS_GERMAN . '</b>: ' . $question->getQuestionCommentDE() . '<hr/>';
+                                                if ($i == $nbrQuestions1) : ?>
+                                                    <a href="<?php echo URL_DIR . 'phases/add?noQuestion=6&phase=5'; ?>" class="btn btn-success"><?php echo PHASE1_ADD; ?></a>
+                                                    <a href="<?php echo URL_DIR . 'phases/edit?id=' . $question->getId() . '&phase=5'; ?>" class="btn btn-warning"><?php echo PHASE1_EDIT; ?></a>
+                                                    <input type="checkbox" id="<?php echo 'checkb' . $i; ?>"/>
+                                                    <input type="button" class="btn btn-danger" name="delete" disabled="disabled" id="<?php echo 'delete' . $i; ?>" onclick="location.href='<?php echo URL_DIR . 'phases/deleteQuestion?id=' . $question->getId() . '&phase=5'; ?>'" value="<?php echo  PHASE1_DELETE; ?>" />
+                                                <?php else : ?>
+                                                    <a href="<?php echo URL_DIR . 'phases/edit?id=' . $question->getId() . '&phase=5'; ?>" class="btn btn-warning"><?php echo PHASE1_EDIT; ?></a>
+                                                <?php endif; ?>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <?php endforeach; ?>
-                            
+                                <?php endforeach; 
+                            else : ?>
+                                <a href="<?php echo URL_DIR . 'phases/add?noQuestion=6&phase=5'; ?>" class="btn btn-success"><?php echo PHASE1_ADD; ?></a>
+                                <br/>
+                            <?php endif; ?>
+                                
                             <br/>
                             
                             <?php
                             $questions = phasesController::getQuestionsByNo(7);
-                            $nbrQuestions2 = count($questions);
-                            $i = 50;
+                            if ($questions) :
+                                $nbrQuestions2 = count($questions);
+                                $i = 50;
 
-                            foreach ($questions as $question): $i++; ?>
-                            
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <?php if ($i-50 == $nbrQuestions2) : ?>
-                                            <a data-toggle="collapse" data-parent="#accordion" href="<?php echo '#collapse' . $i; ?>" ><?php echo PHASE1_QUESTION . ' '. $question->getQuestionNo() . ' <i class="fa fa-plus"></i> <i class="fa fa-pencil"></i> <i class="fa fa-ban"></i>'; ?></a>
-                                        <?php else : ?>
-                                            <a data-toggle="collapse" data-parent="#accordion" href="<?php echo '#collapse' . $i; ?>" ><?php echo PHASE1_QUESTION . ' '. $question->getQuestionNo() . ' <i class="fa fa-pencil"></i>'; ?></a>
-                                        <?php endif; ?>
-                                    </h4>
-                                </div>
-                                
-                                <div id="<?php echo 'collapse' . $i; ?>" class="panel-collapse collapse" style="height: auto;">
-                                    <div class="panel-body">
-                                        <?php 
-                                            echo '<b>' . SETTINGS_FRENCH . '</b>: ' . $question->getQuestionFR() . '<br/>'; 
-                                            echo '<b>' . SETTINGS_GERMAN . '</b>: ' . $question->getQuestionDE() . '<hr/>'; 
-                                            echo '<b>' . PHASE1_COMMENT . '</b><br/>';
-                                            echo '<b>' . SETTINGS_FRENCH . '</b>: ' . $question->getQuestionCommentFR() . '<br/>'; 
-                                            echo '<b>' . SETTINGS_GERMAN . '</b>: ' . $question->getQuestionCommentDE() . '<hr/>';
-                                            if ($i-50 == $nbrQuestions2) : ?>
-                                                <a href="<?php echo URL_DIR . 'phases/add?noQuestion=7&phase=5'; ?>" class="btn btn-success"><?php echo PHASE1_ADD; ?></a>
-                                                <a href="<?php echo URL_DIR . 'phases/edit?id=' . $question->getId() . '&phase=5'; ?>" class="btn btn-warning"><?php echo PHASE1_EDIT; ?></a>
-                                                <input type="checkbox" id="<?php echo 'checkb' . $i; ?>"/>
-                                                <input type="button" class="btn btn-danger" name="delete" disabled="disabled" id="<?php echo 'delete' . $i; ?>" onclick="location.href='<?php echo URL_DIR . 'phases/deleteQuestion?id=' . $question->getId() . '&phase=5'; ?>'" value="<?php echo  PHASE1_DELETE; ?>" />
+                                foreach ($questions as $question): $i++; ?>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <?php if ($i-50 == $nbrQuestions2) : ?>
+                                                <a data-toggle="collapse" data-parent="#accordion" href="<?php echo '#collapse' . $i; ?>" ><?php echo PHASE1_QUESTION . ' '. $question->getQuestionNo() . ' <i class="fa fa-plus"></i> <i class="fa fa-pencil"></i> <i class="fa fa-ban"></i>'; ?></a>
                                             <?php else : ?>
-                                                <a href="<?php echo URL_DIR . 'phases/edit?id=' . $question->getId() . '&phase=5'; ?>" class="btn btn-warning"><?php echo PHASE1_EDIT; ?></a>
+                                                <a data-toggle="collapse" data-parent="#accordion" href="<?php echo '#collapse' . $i; ?>" ><?php echo PHASE1_QUESTION . ' '. $question->getQuestionNo() . ' <i class="fa fa-pencil"></i>'; ?></a>
                                             <?php endif; ?>
+                                        </h4>
+                                    </div>
+
+                                    <div id="<?php echo 'collapse' . $i; ?>" class="panel-collapse collapse" style="height: auto;">
+                                        <div class="panel-body">
+                                            <?php 
+                                                echo '<b>' . SETTINGS_FRENCH . '</b>: ' . $question->getQuestionFR() . '<br/>'; 
+                                                echo '<b>' . SETTINGS_GERMAN . '</b>: ' . $question->getQuestionDE() . '<hr/>'; 
+                                                echo '<b>' . PHASE1_COMMENT . '</b><br/>';
+                                                echo '<b>' . SETTINGS_FRENCH . '</b>: ' . $question->getQuestionCommentFR() . '<br/>'; 
+                                                echo '<b>' . SETTINGS_GERMAN . '</b>: ' . $question->getQuestionCommentDE() . '<hr/>';
+                                                if ($i-50 == $nbrQuestions2) : ?>
+                                                    <a href="<?php echo URL_DIR . 'phases/add?noQuestion=7&phase=5'; ?>" class="btn btn-success"><?php echo PHASE1_ADD; ?></a>
+                                                    <a href="<?php echo URL_DIR . 'phases/edit?id=' . $question->getId() . '&phase=5'; ?>" class="btn btn-warning"><?php echo PHASE1_EDIT; ?></a>
+                                                    <input type="checkbox" id="<?php echo 'checkb' . $i; ?>"/>
+                                                    <input type="button" class="btn btn-danger" name="delete" disabled="disabled" id="<?php echo 'delete' . $i; ?>" onclick="location.href='<?php echo URL_DIR . 'phases/deleteQuestion?id=' . $question->getId() . '&phase=5'; ?>'" value="<?php echo  PHASE1_DELETE; ?>" />
+                                                <?php else : ?>
+                                                    <a href="<?php echo URL_DIR . 'phases/edit?id=' . $question->getId() . '&phase=5'; ?>" class="btn btn-warning"><?php echo PHASE1_EDIT; ?></a>
+                                                <?php endif; ?>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <?php endforeach; ?>
-                            
+                                <?php endforeach; 
+                            else : ?>
+                                <a href="<?php echo URL_DIR . 'phases/add?noQuestion=7&phase=5'; ?>" class="btn btn-success"><?php echo PHASE1_ADD; ?></a>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -234,32 +244,35 @@
         <script src="../js/bootstrap.min.js"></script>
         <script src="../js/custom.js"></script>
         <script>
-        var nbrQuesions1 = <?php echo json_encode($nbrQuestions1); ?>;
-        var checker1 = document.getElementById('checkb' + nbrQuesions1);
-        var deletebtn1 = document.getElementById('delete' + nbrQuesions1);
-        
-        var nbrQuesions2 = <?php echo json_encode($nbrQuestions2); ?> + 50;
-        var checker2 = document.getElementById('checkb' + nbrQuesions2);
-        var deletebtn2 = document.getElementById('delete' + nbrQuesions2);
-        
-    // when unchecked or checked, run the function
-        checker1.onchange = function(){
-            if(this.checked){
-                deletebtn1.disabled = false;
-            } else {
-                deletebtn1.disabled = true;
-            }
-        };
-        
-        // when unchecked or checked, run the function
-        checker2.onchange = function(){
-            if(this.checked){
-                deletebtn2.disabled = false;
-            } else {
-                deletebtn2.disabled = true;
-            }
-        };
-        
+        var nbrQuestions1 = <?php echo json_encode($nbrQuestions1); ?>;
+        if (nbrQuestions1 !== 0) {
+            var checker1 = document.getElementById('checkb' + nbrQuestions1);
+            var deletebtn1 = document.getElementById('delete' + nbrQuestions1);
+            
+            // when unchecked or checked, run the function
+            checker1.onchange = function(){
+                if(this.checked){
+                    deletebtn1.disabled = false;
+                } else {
+                    deletebtn1.disabled = true;
+                }
+            };
+        }
+                
+        var nbrQuestions2 = <?php echo json_encode($nbrQuestions2); ?> + 50;
+        if (nbrQuestions2 !== 0) {
+            var checker2 = document.getElementById('checkb' + nbrQuestions2);
+            var deletebtn2 = document.getElementById('delete' + nbrQuestions2);
+
+            // when unchecked or checked, run the function
+            checker2.onchange = function(){
+                if(this.checked){
+                    deletebtn2.disabled = false;
+                } else {
+                    deletebtn2.disabled = true;
+                }
+            };
+        }
         </script>
   
     </body>

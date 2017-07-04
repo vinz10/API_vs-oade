@@ -13,8 +13,12 @@ define("MSG_ERROR", "Erreur!");
 define("MSG_INCORRECT_PWD", "Utilisateur ou mot de passe incorrect.");
 define("MSG_TOTAL_AXE", "Nombre d'axes maximal atteint.");
 define("MSG_DELETE_AXE_IMPOSSIBLE", "Impossible de supprimer cet axe car il est lié à une question.");
+define("MSG_DELETE_USER_IMPOSSIBLE", "Impossible de supprimer cet utilisateur car c'est le seul utilisateur disponible.");
+define("MSG_PWD_ERROR", "Les mots de passe ne correspondent pas.");
+define("MSG_ADD_AXE", "Veuillez ajouter un axe avant d'insérer une question pour cette phase.");
 define("MSG_WARNING", "Attention!");
 define("MSG_AXE_EXIST", "L'axe existe déjà.");
+define("MSG_USER_EXIST", "L'utilisateur existe déjà.");
 define("MSG_INFO", "Information!");
 define("MSG_CONNECT", "Veuillez vous connecter.");
 define("MSG_NO_PROJECT", "Il n'y a aucun projet existant sur cette commune.");
@@ -95,6 +99,10 @@ define("AXE_AXE", "AXES");
 // USERS
 define("USERS_TITLE", "API VS-OADE Utilisateurs");
 define("USERS_USERS", "UTILISATEURS");
+define("USERS_USER", "Utilisateur");
+define("USERS_USERNAME", "Nom d'utilisateur");
+define("USERS_PASSWORD", "Mot de passe");
+define("USERS_CONFIRM", "Confirmer");
 
 // SETTINGS
 define("SETTINGS_TITLE", "API VS-OADE Paramètres");

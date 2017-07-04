@@ -176,10 +176,16 @@ class phasesController extends Controller {
         // Create the new question
         $question = new Question(null, $questionNo, $questionFR, $questionCommentFR, $questionDE, $questionCommentDE, $idAxe);
         
-        // Insert the question
-        $question->insertQuestion();
-        $_SESSION['msgSuccess'] = MSG_INSERT;
-        $this->redirect('phases', 'phase' . $phase);
+        if (!$idAxe && $phase == 2) {
+            $_SESSION['msg'] = MSG_ADD_AXE;
+            $this->redirect('phases', 'phase' . $phase);
+        } 
+        else {
+            // Insert the question
+            $question->insertQuestion();
+            $_SESSION['msgSuccess'] = MSG_INSERT;
+            $this->redirect('phases', 'phase' . $phase);
+        }
     }
     
     /**

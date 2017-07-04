@@ -137,38 +137,42 @@
                             
                             <?php
                             $axes = axesController::getAxes();
-                            $nbrAxes = count($axes);
-                            $i = 0;
+                            if ($axes) :
+                                $nbrAxes = count($axes);
+                                $i = 0;
 
-                            foreach ($axes as $axe): $i++; ?>
-                            
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="<?php echo '#collapse' . $i; ?>" class="collapsed"><?php echo EDIT_AXE . ' '. $i . ' <i class="fa fa-plus"></i> <i class="fa fa-pencil"></i> <i class="fa fa-ban"></i>'; ?></a>
-                                    </h4>
-                                </div>
-                                
-                                <?php if ($i == 1) : ?>
-                                    <div id="<?php echo 'collapse' . $i; ?>" class="panel-collapse in" style="height: auto;">
-                                <?php else : ?>
-                                    <div id="<?php echo 'collapse' . $i; ?>" class="panel-collapse collapse" style="height: auto;">
-                                <?php endif; ?>
-                                        
-                                    <div class="panel-body">
-                                        <?php 
-                                        echo '<b>' . SETTINGS_FRENCH . '</b>: ' . $axe->getNameFR() . '<br/>'; 
-                                        echo '<b>' . SETTINGS_GERMAN . '</b>: ' . $axe->getNameDE() . '<hr/>'; 
-                                        ?>
-                                        <a href="<?php echo URL_DIR . 'axes/add'; ?>" class="btn btn-success"><?php echo PHASE1_ADD; ?></a>
-                                        <a href="<?php echo URL_DIR . 'axes/edit?id=' . $axe->getId(); ?>" class="btn btn-warning"><?php echo PHASE1_EDIT; ?></a>
-                                        <a href="<?php echo URL_DIR . 'axes/deleteAxe?id=' . $axe->getId(); ?>" class="btn btn-danger"><?php echo  PHASE1_DELETE; ?></a>
+                                foreach ($axes as $axe): $i++; ?>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="<?php echo '#collapse' . $i; ?>" class="collapsed"><?php echo EDIT_AXE . ' '. $i . ' <i class="fa fa-plus"></i> <i class="fa fa-pencil"></i> <i class="fa fa-ban"></i>'; ?></a>
+                                        </h4>
                                     </div>
-                                </div>
-                                
-                            </div>
 
-                            <?php endforeach; ?>    
+                                    <?php if ($i == 1) : ?>
+                                        <div id="<?php echo 'collapse' . $i; ?>" class="panel-collapse in" style="height: auto;">
+                                    <?php else : ?>
+                                        <div id="<?php echo 'collapse' . $i; ?>" class="panel-collapse collapse" style="height: auto;">
+                                    <?php endif; ?>
+
+                                        <div class="panel-body">
+                                            <?php 
+                                            echo '<b>' . SETTINGS_FRENCH . '</b>: ' . $axe->getNameFR() . '<br/>'; 
+                                            echo '<b>' . SETTINGS_GERMAN . '</b>: ' . $axe->getNameDE() . '<hr/>'; 
+                                            ?>
+                                            <a href="<?php echo URL_DIR . 'axes/add'; ?>" class="btn btn-success"><?php echo PHASE1_ADD; ?></a>
+                                            <a href="<?php echo URL_DIR . 'axes/edit?id=' . $axe->getId(); ?>" class="btn btn-warning"><?php echo PHASE1_EDIT; ?></a>
+                                            <a href="<?php echo URL_DIR . 'axes/deleteAxe?id=' . $axe->getId(); ?>" class="btn btn-danger"><?php echo  PHASE1_DELETE; ?></a>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <?php endforeach; 
+                            else : ?>    
+                                <a href="<?php echo URL_DIR . 'axes/add'; ?>" class="btn btn-success"><?php echo PHASE1_ADD; ?></a>
+                            <?php endif; ?>                
                         </div>
                     </div>
                     

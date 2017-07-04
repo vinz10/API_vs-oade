@@ -127,19 +127,25 @@
                     <div class="col-lg-12">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
-                                <?php echo EDIT_AXE; ?>
+                                <?php echo USERS_USER; ?>
                             </div>
-                            <form action="<?php echo URL_DIR . 'axes/addAxe'; ?>" method="post">
+                            <form action="<?php echo URL_DIR . 'users/addUser'; ?>" method="post">
                                 <div class="panel-body">
                                     <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-list"></i><?php echo ' ' . SETTINGS_FRENCH; ?></span>
-                                        <input type="text" name="nameFR" id="nameFR" class="form-control" required="required" placeholder="<?php echo EDIT_AXE; ?>" 
+                                        <span class="input-group-addon"><i class="fa fa-user"></i><?php echo ' ' . USERS_USERNAME; ?></span>
+                                        <input type="text" name="username" id="username" class="form-control" required="required" placeholder="<?php echo USERS_USERNAME; ?>" 
                                             value=""/>
                                     </div>
                                     <br />
                                     <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-list"></i><?php echo ' ' . SETTINGS_GERMAN; ?></i></span>
-                                        <input type="text" name="nameDE" id="nameDE" class="form-control" required="required" placeholder="<?php echo EDIT_AXE; ?>" 
+                                        <span class="input-group-addon"><i class="fa fa-key"></i><?php echo ' ' . USERS_PASSWORD; ?></i></span>
+                                        <input type="password" name="password" id="password" class="form-control" required="required" placeholder="<?php echo USERS_PASSWORD; ?>" 
+                                            value=""/>
+                                    </div>
+                                    <br />
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-check"></i><?php echo ' ' . USERS_CONFIRM; ?></i></span>
+                                        <input type="password" name="confirmPassword" id="confirmPassword" class="form-control" required="required" placeholder="<?php echo USERS_CONFIRM; ?>" 
                                             value=""/>
                                     </div>
                                     <hr />

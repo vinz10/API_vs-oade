@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title><?php echo ADD_TITLE; ?></title>
+        <title><?php echo EDIT_TITLE; ?></title>
         
         <!-- Custom StyleSheet -->
         <link href="../css/bootstrap.css" rel="stylesheet" />
@@ -18,7 +18,8 @@
     <?php
     // Initialization of variables
     $msg = $this->vars['msg'];
-    $msgSuccess = $this->vars['msgSuccess'];	
+    $msgSuccess = $this->vars['msgSuccess'];
+    $user = new User($this->data ['idUser'], $this->data ['username'], $this->data ['password']);	
     $login = $_SESSION ['login'];
     $lang = $_SESSION['lang'];
     ?>
@@ -102,54 +103,46 @@
                 </div>
             </nav>
             
-            <!-- ADD -->
+            <!-- EDIT -->
             <div id="page-wrapper" >
                 <div id="page-inner">
                     
                     <div class="row">
                         <div class="col-lg-12">
-                            <h2><?php echo ADD_TITLE; ?></h2>   
+                            <h2><?php echo EDIT_EDIT; ?></h2>   
                         </div>
                     </div> 
                     
                     <hr />
                     
                     <!-- Messages -->
-                    <?php if (!empty($msg)) : ?>
-                        <div class="members wow agileits w3layouts slideInLeft">
-                            <div class="alert agileits w3layouts alert-warning" role="alert">
-                                <strong><?php echo MSG_WARNING; ?></strong> <?php echo ' ' . $msg; ?>
-                            </div>
-                        </div>
-                    <?php endif; ?>
                     
-                    <!-- ADD -->
+                    <!-- EDIT -->
                     <div class="col-lg-12">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
-                                <?php echo EDIT_AXE; ?>
+                                <?php echo USERS_USER . ' ' . $user->getId(); ?>
                             </div>
-                            <form action="<?php echo URL_DIR . 'axes/addAxe'; ?>" method="post">
+                            <form action="<?php echo URL_DIR . 'users/modifUser?id=' . $user->getId(); ?>" method="post">
                                 <div class="panel-body">
                                     <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-list"></i><?php echo ' ' . SETTINGS_FRENCH; ?></span>
-                                        <input type="text" name="nameFR" id="nameFR" class="form-control" required="required" placeholder="<?php echo EDIT_AXE; ?>" 
-                                            value=""/>
+                                        <span class="input-group-addon"><i class="fa fa-user"></i><?php echo ' ' . USERS_USERNAME; ?></span>
+                                        <input type="text" name="username" id="username" class="form-control" required="required" placeholder="<?php echo USERS_USERNAME; ?>" 
+                                            value="<?php echo $user->getUsername(); ?>"/>
                                     </div>
                                     <br />
                                     <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-list"></i><?php echo ' ' . SETTINGS_GERMAN; ?></i></span>
-                                        <input type="text" name="nameDE" id="nameDE" class="form-control" required="required" placeholder="<?php echo EDIT_AXE; ?>" 
-                                            value=""/>
+                                        <span class="input-group-addon"><i class="fa fa-key"></i><?php echo ' ' . USERS_PASSWORD; ?></i></span>
+                                        <input type="password" name="password" id="password" class="form-control" required="required" placeholder="<?php echo USERS_PASSWORD; ?>" 
+                                            value="<?php echo $user->getPassword(); ?>"/>
                                     </div>
                                     <hr />
-                                    
-                                    <input type="submit" name="Submit" class="btn btn-success" value="<?php echo PHASE1_ADD; ?>" />
+                                    <input type="submit" name="Submit" class="btn btn-warning" value="<?php echo PHASE1_EDIT; ?>" />
                                 </div>
                             </form>
                         </div>
-                    </div>  
-                </div>     
+                    </div> 
+                </div>   
             </div>
         </div>
         

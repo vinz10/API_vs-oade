@@ -20,6 +20,7 @@
     $msg = $this->vars['msg'];
     $msgSuccess = $this->vars['msgSuccess'];
     $login = $_SESSION ['login'];
+    $lang = $_SESSION['lang'];
     ?>
     
     <body>
@@ -101,7 +102,7 @@
                 </div>
             </nav>
             
-            <!-- USERS -->
+            <!-- AXES -->
             <div id="page-wrapper" >
                 <div id="page-inner">
                     
@@ -114,6 +115,62 @@
                     <hr />
                     
                     <!-- Messages -->
+                    <?php if (!empty($msgSuccess)) : ?>
+                        <div class="members wow agileits w3layouts slideInLeft">
+                            <div class="alert agileits w3layouts alert-success" role="alert">
+                                <strong><?php echo MSG_SUCCESS; ?></strong> <?php echo ' ' . $msgSuccess; ?>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                    
+                    <?php if (!empty($msg)) : ?>
+                        <div class="members wow agileits w3layouts slideInLeft">
+                            <div class="alert agileits w3layouts alert-danger" role="alert">
+                                <strong><?php echo MSG_ERROR; ?></strong> <?php echo ' ' . $msg; ?>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                    
+                    <!-- USERS -->
+                    <div class="col-lg-12">
+                        <div class="panel-group" id="accordion">
+                            
+                            <?php
+                            $users = usersController::getUsers();
+                            $nbrUsers = count($users);
+                            $i = 0;
+
+                            foreach ($users as $user): $i++; ?>
+                            
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="<?php echo '#collapse' . $i; ?>" class="collapsed"><?php echo USERS_USER . ' '. $i . ' <i class="fa fa-plus"></i> <i class="fa fa-pencil"></i> <i class="fa fa-ban"></i>'; ?></a>
+                                    </h4>
+                                </div>
+                                
+                                <?php if ($i == 1) : ?>
+                                    <div id="<?php echo 'collapse' . $i; ?>" class="panel-collapse in" style="height: auto;">
+                                <?php else : ?>
+                                    <div id="<?php echo 'collapse' . $i; ?>" class="panel-collapse collapse" style="height: auto;">
+                                <?php endif; ?>
+                                        
+                                    <div class="panel-body">
+                                        <?php 
+                                        echo '<b>' . USERS_USERNAME . '</b>: ' . $user->getUsername() . '<br/>'; 
+                                        echo '<b>' . USERS_PASSWORD . '</b>: ' . $user->getPassword() . '<hr/>'; 
+                                        ?>
+                                        <a href="<?php echo URL_DIR . 'users/add'; ?>" class="btn btn-success"><?php echo PHASE1_ADD; ?></a>
+                                        <a href="<?php echo URL_DIR . 'users/edit?id=' . $user->getId(); ?>" class="btn btn-warning"><?php echo PHASE1_EDIT; ?></a>
+                                        <a href="<?php echo URL_DIR . 'users/deleteUser?id=' . $user->getId(); ?>" class="btn btn-danger"><?php echo  PHASE1_DELETE; ?></a>
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                            <?php endforeach; ?>    
+                        </div>
+                    </div>
                     
                 </div>
             </div>

@@ -5,13 +5,6 @@
         <group>
             <file>file:/C:/xampp/htdocs/API_vs-oade/views/phases/phase1.php</file>
             <file>file:/C:/xampp/htdocs/API_vs-oade/views/login/login.php</file>
-            <file>file:/C:/xampp/htdocs/API_vs-oade/lang/lang.de.php</file>
-            <file>file:/C:/xampp/htdocs/API_vs-oade/models/Class.Question.php</file>
-            <file>file:/C:/xampp/htdocs/API_vs-oade/controllers/Class.phasesController.php</file>
-            <file>file:/C:/xampp/htdocs/API_vs-oade/lang/lang.fr.php</file>
-            <file>file:/C:/xampp/htdocs/API_vs-oade/views/phases/add.php</file>
-            <file>file:/C:/xampp/htdocs/API_vs-oade/views/phases/edit.php</file>
-            <file>file:/C:/xampp/htdocs/API_vs-oade/vs-oade_api.php</file>
         </group>
     </open-files>
 </project-private>

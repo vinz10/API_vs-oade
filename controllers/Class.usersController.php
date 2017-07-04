@@ -22,51 +22,156 @@ class usersController extends Controller {
     }	
     
     /**
-     // @method validatePhase0()
-     // @desc Method for the validation of phase 0
+     // @method add()
+     // @desc Method to load the page 'add.php'
      */
-    function validatePhase0() {
+    function add() {
+        
+        // Initialization of variables
+        $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
+        $this->vars['msgSuccess'] = isset($_SESSION['msgSuccess']) ? $_SESSION['msgSuccess'] : '';
+        
+        // If no login
+        if(!$this->getLogin()){
+            $this->redirect('', '');
+            exit;
+        } 
+    }	
+    
+    /**
+     // @method edit()
+     // @desc Method to load the page 'edit.php'
+     */
+    function edit() {
+        
+        // Initialization of variables
+        $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
+        $this->vars['msgSuccess'] = isset($_SESSION['msgSuccess']) ? $_SESSION['msgSuccess'] : '';
+        
+        $this->getUser();
+        
+        // If no login
+        if(!$this->getLogin()){
+            $this->redirect('', '');
+            exit;
+        } 
+    }	
+    
+    /**
+     // @method addUser()
+     // @desc Method for adding a user
+     */
+    function addUser() {
 
         // Get data posted by the form
-        $name = $_POST['name'];
-        $description = $_POST['description'];
-        $poLastname = $_POST['poLastname'];
-        $poFirstname = $_POST['poFirstname'];
-        
-        // Get the town Id
-        $login = $_SESSION ['login'];
-        $townId = $login->getId();
-        
-        // Get the id of the project
-        if (isset($_GET['id'])) {
-            $idProject = intval($_GET['id']);
-        }
-        else {
-            $idProject = null;
-        }
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $confirmPassword = $_POST['confirmPassword'];
 
-        // Create the new project
-        $project = new Project($idProject, $name, $description, $poLastname, $poFirstname, $townId);
+        // Create the new user
+        $user = new User(null, $username, $password);
         
-        // Check if the name of the project already exists
-        if ($project->existProject($idProject, $name, $townId)) {
-            if ($idProject == null) {
-                $_SESSION['msg'] = MSG_PROJECT_EXIST;
-                $this->redirect('projects', 'phase0');
-                
-            }
-            else {
-                // Update the project
-                $project->updateProject($idProject);
-                $_SESSION['msgSuccess'] = MSG_MODIF;
-                $this->redirect('projects', 'phase0?id=' . $idProject);
+        // Insert the user
+        if ($user->existUser($username)) {
+            $_SESSION['msg'] = MSG_USER_EXIST;
+            $this->redirect('users', 'add');
+        } 
+        elseif ($password != $confirmPassword) {
+            $_SESSION['msg'] = MSG_PWD_ERROR;
+            $this->redirect('users', 'add');
+        }
+        else {
+            $user->insertUser();
+            $_SESSION['msgSuccess'] = MSG_INSERT;
+            $this->redirect('users', 'users');
+        }
+    }
+    
+    /**
+     // @method modifUser()
+     // @desc Method for the modification of a user
+     */
+    function modifUser() {
+
+        // Get data posted by the form
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $idUser = intval($_GET['id']);
+
+        // Create the new user
+        $user = new User($idUser, $username, $password);
+        
+        // Update the user
+        $user->updateUser($idUser);
+        $_SESSION['msgSuccess'] = MSG_MODIF;
+        $this->redirect('users', 'users');
+    }
+    
+    /**
+     // @method deleteUser()
+     // @desc Method for deleting a user
+     */
+    function deleteUser() {
+
+        // Get data posted by the form
+        $idUser = intval($_GET['id']);
+        
+        if (!User::checkNbr()) {
+            $_SESSION['msg'] = MSG_DELETE_USER_IMPOSSIBLE;
+        }
+        else {
+            User::deleteUser($idUser);
+            $_SESSION['msgSuccess'] = MSG_DELETE;
+        }
+        
+        $this->redirect('users', 'users');
+    }
+    
+    /**
+    // @method getUser()
+    // @desc Method that get the user if exists
+    */
+    private function getUser() {
+        
+        // Get the id of the user
+        if (isset($_GET['id'])) {
+            $idUser = intval($_GET['id']);
+            if ($idUser != 0) {
+                $user = User::getUserById($idUser);
+                if($user){
+                    $this->data['idUser'] = $user->getId();
+                    $this->data['username'] = $user->getUsername();
+                    $this->data['password'] = $user->getPassword();
+                }
+                else {
+                    $this->redirect('error', 'http404');
+                }
             }
         }
         else {
-            // Save new project into the db
-            $project->insertProject();
-            $this->redirect('projects', 'projects');
+            $this->data['idUser'] = null;
+            $this->data['username'] = null;
+            $this->data['password'] = null;
         }
+    }
+    
+    /**
+     // @method getUsers()
+     // @desc Method that get users from the DB
+     // @return Users
+     */
+    public static function getUsers() {
+        return User::getUsers();
+    }
+    
+    /**
+     // @method getUserById()
+     // @desc Method that get a user by the id of the user from the DB
+     // @param int $idUser
+     // @return User
+     */
+    public static function getUserById($idUser) {
+        return User::getUserById($idUser);
     }
 }
 

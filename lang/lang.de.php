@@ -13,8 +13,12 @@ define("MSG_ERROR", "Fehler!");
 define("MSG_INCORRECT_PWD", "Falscher Benutzername oder falsches Passwort.");
 define("MSG_TOTAL_AXE", "Maximale Anzahl der Achsen erreicht.");
 define("MSG_DELETE_AXE_IMPOSSIBLE", "Kann diese Zeile nicht gelöscht werden, da sie auf eine Frage verknüpft ist.");
+define("MSG_DELETE_USER_IMPOSSIBLE", "Kann nicht um diesen Benutzer löschen, da es der einzige Benutzer zur Verfügung steht.");
+define("MSG_PWD_ERROR", "Passwörter stimmen nicht überein.");
+define("MSG_ADD_AXE", "Bitte fügen Sie eine Achse, bevor Sie eine Frage für diese Phase einsetzen.");
 define("MSG_WARNING", "Warnung!");
 define("MSG_AXE_EXIST", "Die Achse ist bereits vorhanden.");
+define("MSG_USER_EXIST", "Der Benutzer ist bereits vorhanden.");
 define("MSG_INFO", "Informationen!");
 define("MSG_CONNECT", "Verbinden Sie Sie bitte.");
 define("MSG_NO_PROJECT", "Es gibt kein existierendes Projekt für diese Stadt.");
@@ -95,6 +99,10 @@ define("AXE_AXE", "ACHSEN");
 // USERS
 define("USERS_TITLE", "API VS-OADE Benutzer");
 define("USERS_USERS", "BENUTZER");
+define("USERS_USER", "Benutzer");
+define("USERS_USERNAME", "Benutzername");
+define("USERS_PASSWORD", "Passwort");
+define("USERS_CONFIRM", "Bestätigen");
 
 // SETTINGS
 define("SETTINGS_TITLE", "API VS-OADE Einstellungen");
