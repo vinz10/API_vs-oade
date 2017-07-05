@@ -141,7 +141,7 @@
                     <!-- DASHBOARD -->
                     <div class="row text-center pad-top">
 
-                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">                       
+                        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">                       
                             <div class="div-square">
                                 <a href="<?php echo URL_DIR . 'phases/phase1'; ?>" >
                                     <i class="fa fa-question-circle fa-5x"></i>
@@ -150,7 +150,7 @@
                             </div>
                         </div> 
 
-                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">                       
+                        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">                       
                             <div class="div-square">
                                 <a href="<?php echo URL_DIR . 'phases/phase2'; ?>" >
                                     <i class="fa fa-signal fa-5x"></i>
@@ -159,7 +159,7 @@
                             </div>
                         </div> 
 
-                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">                       
+                        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">                       
                             <div class="div-square">
                                 <a href="<?php echo URL_DIR . 'phases/phase3'; ?>" >
                                     <i class="fa fa-exclamation-circle fa-5x"></i>
@@ -168,7 +168,7 @@
                             </div>
                         </div> 
 
-                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">                       
+                        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">                       
                             <div class="div-square">
                                 <a href="<?php echo URL_DIR . 'phases/phase4'; ?>" >
                                     <i class="fa fa-pencil fa-5x"></i>
@@ -177,7 +177,7 @@
                             </div>
                         </div> 
 
-                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">                       
+                        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">                       
                             <div class="div-square">
                                 <a href="<?php echo URL_DIR . 'phases/phase5'; ?>" >
                                     <i class="fa fa-adjust fa-5x"></i>
@@ -186,7 +186,7 @@
                             </div>
                         </div> 
 
-                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">                       
+                        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">                       
                             <div class="div-square">
                                 <a href="<?php echo URL_DIR . 'phases/phase6'; ?>" >
                                     <i class="fa fa-plus-circle fa-5x"></i>
@@ -198,7 +198,7 @@
 
                     <div class="row text-center pad-top">
 
-                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
                             <div class="div-square">
                                 <a href="<?php echo URL_DIR . 'axes/axes'; ?>" >
                                     <i class="fa fa-list fa-5x"></i>
@@ -207,7 +207,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
                             <div class="div-square">
                                 <a href="<?php echo URL_DIR . 'users/users'; ?>" >
                                     <i class="fa fa-users fa-5x"></i>
@@ -216,7 +216,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
                             <div class="div-square">
                                 <a href="<?php echo URL_DIR . 'settings/settings'; ?>" >
                                     <i class="fa fa-gear fa-5x"></i>
@@ -225,7 +225,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
                             <div class="div-square">
                                 <?php if ($login) : ?>
                                     <a href="<?php echo URL_DIR . 'login/logout'; ?>" >
