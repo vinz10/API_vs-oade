@@ -197,7 +197,7 @@ class User {
         $result = SqlConnection::getInstance()->selectDB($query);
         $rows = $result->fetchAll();
 
-        if (!$rows[1]) {
+        if (count($rows) == 1) {
             return false;
         }
 
