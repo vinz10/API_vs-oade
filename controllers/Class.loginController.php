@@ -55,7 +55,7 @@ class loginController extends Controller {
     function logout() {
 
         // Destroy the session
-        session_destroy();
+        $_SESSION["login"] = null;
         $this->redirect('', '');
     }
 
