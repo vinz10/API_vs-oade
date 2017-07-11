@@ -141,7 +141,7 @@
                                     <?php echo '<b>' . PHASE1_COMMENT . '</b><br/>'; ?>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-comment"></i><?php echo ' ' . SETTINGS_FRENCH; ?></span>
-                                        <?php if ($phase == 2) : ?>
+                                        <?php if ($phase == 1 || $phase == 2) : ?>
                                             <input type="text" name="questionCommentFR" id="questionCommentFR" class="form-control" required="required" placeholder="<?php echo PHASE1_COMMENT; ?>" 
                                                    value="<?php echo $question->getQuestionCommentFR(); ?>"/>
                                                <?php else : ?>
@@ -152,7 +152,7 @@
                                     <br />
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-comment"></i><?php echo ' ' . SETTINGS_GERMAN; ?></i></span>
-                                        <?php if ($phase == 2) : ?>
+                                        <?php if ($phase == 1 || $phase == 2) : ?>
                                             <input type="text" name="questionCommentDE" id="questionCommentDE" class="form-control" required="required" placeholder="<?php echo PHASE1_COMMENT; ?>" 
                                                    value="<?php echo $question->getQuestionCommentDE(); ?>"/>
                                                <?php else : ?>
