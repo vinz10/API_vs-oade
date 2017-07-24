@@ -157,7 +157,7 @@ class Axe {
 
         $sql = SqlConnection::getInstance();
 
-        $query = "SELECT * FROM axes WHERE nameFR='$nameFR' OR nameDE='$nameDE';";
+        $query = "SELECT * FROM axes WHERE nameFR=" . $sql->getConn()->quote($nameFR) . " OR nameDE=" . $sql->getConn()->quote($nameDE) . ";";
 
         $result = $sql->selectDB($query);
         $row = $result->fetch();

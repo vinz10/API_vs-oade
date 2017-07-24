@@ -175,7 +175,7 @@ class User {
 
         $sql = SqlConnection::getInstance();
 
-        $query = "SELECT * FROM users WHERE username='$username';";
+        $query = "SELECT * FROM users WHERE username=" . $sql->getConn()->quote($username) . ";";
 
         $result = $sql->selectDB($query);
         $row = $result->fetch();
